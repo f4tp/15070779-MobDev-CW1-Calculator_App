@@ -12,6 +12,7 @@
 		2CCC03061DB3837D00A6E7AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CCC03041DB3837D00A6E7AE /* Main.storyboard */; };
 		2CCC03081DB3837D00A6E7AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CCC03071DB3837D00A6E7AE /* Assets.xcassets */; };
 		2CCC030B1DB3837D00A6E7AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CCC03091DB3837D00A6E7AE /* LaunchScreen.storyboard */; };
+		2CCC03151DB3891700A6E7AE /* draggable:UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC03141DB3891700A6E7AE /* draggable:UIImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		2CCC03071DB3837D00A6E7AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CCC030A1DB3837D00A6E7AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CCC030C1DB3837D00A6E7AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CCC03141DB3891700A6E7AE /* draggable:UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "draggable:UIImageView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		2CCC02FF1DB3837D00A6E7AE /* [15070779]CW1_Calculator_App */ = {
 			isa = PBXGroup;
 			children = (
+				2CCC03141DB3891700A6E7AE /* draggable:UIImageView.swift */,
 				2CCC03001DB3837D00A6E7AE /* AppDelegate.swift */,
 				2CCC03021DB3837D00A6E7AE /* ViewController.swift */,
 				2CCC03041DB3837D00A6E7AE /* Main.storyboard */,
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CCC03031DB3837D00A6E7AE /* ViewController.swift in Sources */,
+				2CCC03151DB3891700A6E7AE /* draggable:UIImageView.swift in Sources */,
 				2CCC03011DB3837D00A6E7AE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
