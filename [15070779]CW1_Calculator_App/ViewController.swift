@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var lblWellDone: UILabel!
     
+    @IBOutlet weak var btnWellDone: UIButton!
     @IBAction func btnReload(_ sender: AnyObject) {
         
         viewDidLoad()
@@ -27,6 +28,7 @@ class ViewController: UIViewController {
         if (intTotal == 0) {
             
             lblWellDone.isHidden = false
+            btnWellDone.isHidden = false
             
         }
       
@@ -36,7 +38,7 @@ class ViewController: UIViewController {
         if (intTotal == 1) {
             
             lblWellDone.isHidden = false
-            
+            btnWellDone.isHidden = false
         }
     }
     
@@ -45,7 +47,7 @@ class ViewController: UIViewController {
         if (intTotal == 2) {
             
             lblWellDone.isHidden = false
-            
+            btnWellDone.isHidden = false
         }
     }
     
@@ -54,7 +56,7 @@ class ViewController: UIViewController {
         if (intTotal == 3) {
             
             lblWellDone.isHidden = false
-            
+            btnWellDone.isHidden = false
         }
     }
     
@@ -63,7 +65,7 @@ class ViewController: UIViewController {
         if (intTotal == 4) {
             
             lblWellDone.isHidden = false
-            
+            btnWellDone.isHidden = false
         }
     }
     
@@ -72,7 +74,7 @@ class ViewController: UIViewController {
         if (intTotal == 5) {
             
             lblWellDone.isHidden = false
-            
+            btnWellDone.isHidden = false
         }
     }
     
@@ -81,7 +83,7 @@ class ViewController: UIViewController {
         if (intTotal == 6) {
             
             lblWellDone.isHidden = false
-            
+            btnWellDone.isHidden = false
         }
     }
     
@@ -89,7 +91,7 @@ class ViewController: UIViewController {
         if (intTotal == 7) {
             
             lblWellDone.isHidden = false
-            
+            btnWellDone.isHidden = false
         }
     }
     
@@ -98,7 +100,7 @@ class ViewController: UIViewController {
         if (intTotal == 8) {
             
             lblWellDone.isHidden = false
-            
+            btnWellDone.isHidden = false
         }
     }
     
@@ -106,7 +108,7 @@ class ViewController: UIViewController {
         if (intTotal == 9) {
             
             lblWellDone.isHidden = false
-            
+            btnWellDone.isHidden = false
         }
     }
 
@@ -116,6 +118,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         lblWellDone.isHidden = true
+        btnWellDone.isHidden = true
         
         let intNumber1: Int = Int(arc4random_uniform(4) + 1)
         let intNumber2: Int = Int(arc4random_uniform(4) + 1)
