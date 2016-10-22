@@ -304,6 +304,7 @@
 				2CCC03111DB3837D00A6E7AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

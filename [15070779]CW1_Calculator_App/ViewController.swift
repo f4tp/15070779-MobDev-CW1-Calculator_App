@@ -44,11 +44,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var apple8: draggable_UIImageView!
     
     @IBOutlet weak var apple9: draggable_UIImageView!
-    //outlets & rotuines for basic functionality
+    
     @IBOutlet weak var apple10: draggable_UIImageView!
     
-    @IBOutlet weak var lblWellDone: UILabel!
-    @IBOutlet weak var btnWellDone: UIButton!
+
+    // outlets for the wellDoneView View object so it can be hidden / shown
+    @IBOutlet weak var wellDoneView: UIView!
+    @IBOutlet weak var lblWellDoneMessage: UILabel!
+    
+    @IBOutlet weak var btnHideWellDoneView: UIButton!
     
     //public variable set up to match user's answer to, will be assigned the correct value after Random numbers have been generated
     var intTotal = 10
@@ -74,8 +78,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         //routines for basic functionality
-        lblWellDone.isHidden = true
-        btnWellDone.isHidden = true
+
         
         let intNumber1: Int = Int(arc4random_uniform(4) + 1)
         let intNumber2: Int = Int(arc4random_uniform(4) + 1)
@@ -88,6 +91,18 @@ class ViewController: UIViewController {
         screenSize = UIScreen.main.bounds
         screenWidth = screenSize?.width
         screenHeight = screenSize?.height
+        
+        
+        //initialise the WellDoneView to the same size as the screen
+        var rect = wellDoneView.frame
+        rect.origin.x = 0
+        rect.origin.y = 0
+        rect.size.width = screenWidth!
+        rect.size.height = screenHeight!
+        wellDoneView.frame = rect
+        
+        // hide wellDOneView to show main screen
+                wellDoneView.isHidden = true
         
         
         
@@ -142,6 +157,7 @@ class ViewController: UIViewController {
             }
             
             else{
+                
                 
                 var rect = button0.frame
                 rect.origin.x = 10
@@ -317,6 +333,7 @@ class ViewController: UIViewController {
                 rect.size.width = 55
                 rect.size.height = 55
                 apple10.frame = rect
+                
             }
             
         }
@@ -705,19 +722,21 @@ class ViewController: UIViewController {
     
     }
     
+    
     //handles button clicks to submit answer
     @IBAction func tuButton0(_ sender: AnyObject) {
         if (intTotal == 0) {
-            lblWellDone.isHidden = false
-            btnWellDone.isHidden = false
+            
+            wellDoneView.isHidden = false
+           
         }
     }
     
     @IBAction func tuButton1(_ sender: AnyObject) {
         if (intTotal == 1) {
             
-            lblWellDone.isHidden = false
-            btnWellDone.isHidden = false
+            wellDoneView.isHidden = false
+            
         }
     }
     
@@ -725,8 +744,9 @@ class ViewController: UIViewController {
     @IBAction func tuButton2(_ sender: AnyObject) {
         if (intTotal == 2) {
             
-            lblWellDone.isHidden = false
-            btnWellDone.isHidden = false
+            
+            wellDoneView.isHidden = false
+            
         }
     }
     
@@ -734,8 +754,8 @@ class ViewController: UIViewController {
     @IBAction func tuButton3(_ sender: AnyObject) {
         if (intTotal == 3) {
             
-            lblWellDone.isHidden = false
-            btnWellDone.isHidden = false
+            wellDoneView.isHidden = false
+            
         }
     }
     
@@ -743,8 +763,8 @@ class ViewController: UIViewController {
     @IBAction func tuButton4(_ sender: AnyObject) {
         if (intTotal == 4) {
             
-            lblWellDone.isHidden = false
-            btnWellDone.isHidden = false
+            wellDoneView.isHidden = false
+            
         }
     }
     
@@ -752,8 +772,8 @@ class ViewController: UIViewController {
     @IBAction func tuButton5(_ sender: AnyObject) {
         if (intTotal == 5) {
             
-            lblWellDone.isHidden = false
-            btnWellDone.isHidden = false
+            wellDoneView.isHidden = false
+        
         }
     }
     
@@ -761,16 +781,16 @@ class ViewController: UIViewController {
     @IBAction func tuButton6(_ sender: AnyObject) {
         if (intTotal == 6) {
             
-            lblWellDone.isHidden = false
-            btnWellDone.isHidden = false
+            wellDoneView.isHidden = false
         }
     }
     
     @IBAction func tuButton7(_ sender: AnyObject) {
         if (intTotal == 7) {
             
-            lblWellDone.isHidden = false
-            btnWellDone.isHidden = false
+            
+            wellDoneView.isHidden = false
+       
         }
     }
     
@@ -778,17 +798,35 @@ class ViewController: UIViewController {
     @IBAction func tuButton8(_ sender: AnyObject) {
         if (intTotal == 8) {
             
-            lblWellDone.isHidden = false
-            btnWellDone.isHidden = false
+            
+            wellDoneView.isHidden = false
+ 
+           
         }
     }
     
     @IBAction func tuButton9(_ sender: AnyObject) {
+        
+        
         if (intTotal == 9) {
             
-            lblWellDone.isHidden = false
-            btnWellDone.isHidden = false
+           wellDoneView.isHidden = false
+            
+        
         }
     }
-
+    
+    
+//dismiss welldone view, call the functiosn to initiate the game again
+    @IBAction func btnHideWellDoneView(_ sender: AnyObject) {
+        
+        viewDidLoad()
+        viewWillLayoutSubviews()
+        
+    }
+ 
+    
+    
+    
+    
 }

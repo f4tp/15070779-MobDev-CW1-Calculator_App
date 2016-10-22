@@ -166,25 +166,31 @@
                                     <action selector="tuButton9:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XFR-c8-ZdT"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Well Done!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rLC-uD-loG">
-                                <frame key="frameInset" minX="20" minY="309" width="352" height="90"/>
+                            <view contentMode="scaleToFill" misplaced="YES" id="vSF-EW-gWM" userLabel="wellDoneView">
+                                <frame key="frameInset" minX="-3" width="378" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="74"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4sZ-7U-6np">
-                                <frame key="frameInset" minX="143" minY="400" width="89" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Try Again?"/>
-                                <connections>
-                                    <action selector="btnReload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B8x-uZ-m77"/>
-                                </connections>
-                            </button>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="N11-7v-qVP">
+                                        <frame key="frameInset" minX="142" minY="193" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="btnHideWellDoneView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FUf-nR-ZuH"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Well Done!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7TE-Xx-vx1">
+                                        <frame key="frameInset" minX="8" minY="85" width="362" height="138"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="67"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="OOV-cA-HgH"/>
                     <connections>
                         <outlet property="apple1" destination="8qn-9f-dUI" id="pm7-JG-gPT"/>
                         <outlet property="apple10" destination="Osw-cu-gB5" id="ggC-ng-P3g"/>
@@ -196,7 +202,7 @@
                         <outlet property="apple7" destination="GsO-rE-LUF" id="4SA-Sm-WaQ"/>
                         <outlet property="apple8" destination="J36-m5-hmK" id="ERu-ra-Cp9"/>
                         <outlet property="apple9" destination="HTJ-Ca-rEP" id="x3c-95-pP8"/>
-                        <outlet property="btnWellDone" destination="4sZ-7U-6np" id="e19-Ex-3AH"/>
+                        <outlet property="btnHideWellDoneView" destination="N11-7v-qVP" id="tCU-E6-8h4"/>
                         <outlet property="button0" destination="Q7J-df-TMa" id="3bG-FS-0cI"/>
                         <outlet property="button1" destination="viv-gg-P3g" id="FEu-PP-cd8"/>
                         <outlet property="button2" destination="k9W-IL-5DL" id="Sjh-8N-yom"/>
@@ -211,49 +217,14 @@
                         <outlet property="lblNumber1" destination="OL7-UV-gM9" id="OAe-gU-6AT"/>
                         <outlet property="lblNumber2" destination="gVL-As-SJg" id="XGO-Ie-loQ"/>
                         <outlet property="lblPlusSign" destination="jSK-tN-zZ3" id="L3w-CB-MgT"/>
-                        <outlet property="lblWellDone" destination="rLC-uD-loG" id="bYe-Iq-SQE"/>
+                        <outlet property="lblWellDoneMessage" destination="7TE-Xx-vx1" id="NC8-wR-o1a"/>
                         <outlet property="plateImage" destination="Hgb-2P-UpM" id="HWw-Ea-YS2"/>
-                        <segue destination="72s-HR-4NI" kind="push" identifier="mainToWinSegue" id="bXr-8J-rBE"/>
+                        <outlet property="wellDoneView" destination="vSF-EW-gWM" id="uHd-Gn-3N5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="80.5" y="172.5"/>
-        </scene>
-        <!--Win_Screen-->
-        <scene sceneID="3Nm-gC-8s5">
-            <objects>
-                <viewController id="72s-HR-4NI" userLabel="Win_Screen" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="afF-73-iLT">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Well Done!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GCt-Y5-Vdz">
-                                <frame key="frameInset" minX="11" minY="288" width="352" height="90"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="74"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Nxp-ge-ahq">
-                                <frame key="frameInset" minX="144" minY="384" width="89" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Try Again?"/>
-                                <connections>
-                                    <action selector="btnReload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GLm-bx-rE3"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="2nE-jp-OrB"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="push" identifier="winToMainSegue" id="4hZ-ej-mva"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="coP-EJ-Fsc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="604" y="173"/>
+            <point key="canvasLocation" x="100.5" y="220.5"/>
         </scene>
     </scenes>
     <resources>
