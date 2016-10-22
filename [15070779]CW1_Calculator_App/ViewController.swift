@@ -48,11 +48,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var apple10: draggable_UIImageView!
     
 
-    // outlets for the wellDoneView View object so it can be hidden / shown
-    @IBOutlet weak var wellDoneView: UIView!
-    @IBOutlet weak var lblWellDoneMessage: UILabel!
+
     
-    @IBOutlet weak var btnHideWellDoneView: UIButton!
+ 
     
     //public variable set up to match user's answer to, will be assigned the correct value after Random numbers have been generated
     var intTotal = 10
@@ -80,8 +78,8 @@ class ViewController: UIViewController {
         //routines for basic functionality
 
         
-        let intNumber1: Int = Int(arc4random_uniform(4) + 1)
-        let intNumber2: Int = Int(arc4random_uniform(4) + 1)
+        let intNumber1: Int = Int(arc4random_uniform(5))
+        let intNumber2: Int = Int(arc4random_uniform(6))
         intTotal = intNumber1 + intNumber2
         
         lblNumber1.text = String(intNumber1)
@@ -93,16 +91,8 @@ class ViewController: UIViewController {
         screenHeight = screenSize?.height
         
         
-        //initialise the WellDoneView to the same size as the screen
-        var rect = wellDoneView.frame
-        rect.origin.x = 0
-        rect.origin.y = 0
-        rect.size.width = screenWidth!
-        rect.size.height = screenHeight!
-        wellDoneView.frame = rect
-        
-        // hide wellDOneView to show main screen
-                wellDoneView.isHidden = true
+                
+
         
         
         
@@ -721,112 +711,73 @@ class ViewController: UIViewController {
         
     
     }
-    
+ 
     
     //handles button clicks to submit answer
     @IBAction func tuButton0(_ sender: AnyObject) {
         if (intTotal == 0) {
-            
-            wellDoneView.isHidden = false
-           
+            self.performSegue(withIdentifier: "mainToWin", sender: nil)
         }
     }
     
     @IBAction func tuButton1(_ sender: AnyObject) {
         if (intTotal == 1) {
-            
-            wellDoneView.isHidden = false
-            
+            self.performSegue(withIdentifier: "mainToWin", sender: nil)
         }
     }
     
     
     @IBAction func tuButton2(_ sender: AnyObject) {
         if (intTotal == 2) {
-            
-            
-            wellDoneView.isHidden = false
-            
+            self.performSegue(withIdentifier: "mainToWin", sender: nil)
         }
     }
     
     
     @IBAction func tuButton3(_ sender: AnyObject) {
         if (intTotal == 3) {
-            
-            wellDoneView.isHidden = false
-            
+            self.performSegue(withIdentifier: "mainToWin", sender: nil)
         }
     }
     
     
     @IBAction func tuButton4(_ sender: AnyObject) {
         if (intTotal == 4) {
-            
-            wellDoneView.isHidden = false
-            
+            self.performSegue(withIdentifier: "mainToWin", sender: nil)
         }
     }
     
     
     @IBAction func tuButton5(_ sender: AnyObject) {
         if (intTotal == 5) {
-            
-            wellDoneView.isHidden = false
-        
+            self.performSegue(withIdentifier: "mainToWin", sender: nil)
         }
     }
     
     
     @IBAction func tuButton6(_ sender: AnyObject) {
         if (intTotal == 6) {
-            
-            wellDoneView.isHidden = false
+            self.performSegue(withIdentifier: "mainToWin", sender: nil)
         }
     }
     
     @IBAction func tuButton7(_ sender: AnyObject) {
         if (intTotal == 7) {
-            
-            
-            wellDoneView.isHidden = false
-       
+            self.performSegue(withIdentifier: "mainToWin", sender: nil)
         }
     }
     
     
     @IBAction func tuButton8(_ sender: AnyObject) {
         if (intTotal == 8) {
-            
-            
-            wellDoneView.isHidden = false
- 
-           
+            self.performSegue(withIdentifier: "mainToWin", sender: nil)
         }
     }
     
     @IBAction func tuButton9(_ sender: AnyObject) {
-        
-        
         if (intTotal == 9) {
-            
-           wellDoneView.isHidden = false
-            
-        
+            self.performSegue(withIdentifier: "mainToWin", sender: nil)
         }
     }
-    
-    
-//dismiss welldone view, call the functiosn to initiate the game again
-    @IBAction func btnHideWellDoneView(_ sender: AnyObject) {
-        
-        viewDidLoad()
-        viewWillLayoutSubviews()
-        
-    }
- 
-    
-    
-    
     
 }

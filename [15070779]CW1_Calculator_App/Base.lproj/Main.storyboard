@@ -166,28 +166,6 @@
                                     <action selector="tuButton9:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XFR-c8-ZdT"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" id="vSF-EW-gWM" userLabel="wellDoneView">
-                                <frame key="frameInset" minX="-3" width="378" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="N11-7v-qVP">
-                                        <frame key="frameInset" minX="142" minY="193" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                        <connections>
-                                            <action selector="btnHideWellDoneView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FUf-nR-ZuH"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Well Done!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7TE-Xx-vx1">
-                                        <frame key="frameInset" minX="8" minY="85" width="362" height="138"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="67"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -202,7 +180,6 @@
                         <outlet property="apple7" destination="GsO-rE-LUF" id="4SA-Sm-WaQ"/>
                         <outlet property="apple8" destination="J36-m5-hmK" id="ERu-ra-Cp9"/>
                         <outlet property="apple9" destination="HTJ-Ca-rEP" id="x3c-95-pP8"/>
-                        <outlet property="btnHideWellDoneView" destination="N11-7v-qVP" id="tCU-E6-8h4"/>
                         <outlet property="button0" destination="Q7J-df-TMa" id="3bG-FS-0cI"/>
                         <outlet property="button1" destination="viv-gg-P3g" id="FEu-PP-cd8"/>
                         <outlet property="button2" destination="k9W-IL-5DL" id="Sjh-8N-yom"/>
@@ -217,14 +194,48 @@
                         <outlet property="lblNumber1" destination="OL7-UV-gM9" id="OAe-gU-6AT"/>
                         <outlet property="lblNumber2" destination="gVL-As-SJg" id="XGO-Ie-loQ"/>
                         <outlet property="lblPlusSign" destination="jSK-tN-zZ3" id="L3w-CB-MgT"/>
-                        <outlet property="lblWellDoneMessage" destination="7TE-Xx-vx1" id="NC8-wR-o1a"/>
                         <outlet property="plateImage" destination="Hgb-2P-UpM" id="HWw-Ea-YS2"/>
-                        <outlet property="wellDoneView" destination="vSF-EW-gWM" id="uHd-Gn-3N5"/>
+                        <segue destination="uip-mS-oN3" kind="modal" identifier="mainToWin" id="L9c-Be-qMn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="100.5" y="220.5"/>
+        </scene>
+        <!--Win_Screen-->
+        <scene sceneID="7qK-Ny-bVd">
+            <objects>
+                <viewController id="uip-mS-oN3" userLabel="Win_Screen" customClass="WinScreenViewController" customModule="_15070779_CW1_Calculator_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HsX-Kf-nOw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Well Done!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BOy-Wn-7k7">
+                                <frame key="frameInset" minX="16" minY="20" width="352" height="78"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="72"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RFT-4h-3BQ">
+                                <frame key="frameInset" minX="169" minY="106" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="btnReturnToMain:" destination="uip-mS-oN3" eventType="touchUpInside" id="Mfp-6A-yfD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Fgw-o2-bo7"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="modal" identifier="winToMain" modalTransitionStyle="crossDissolve" id="aYf-nz-2oD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GmA-37-waw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="525.5" y="220.5"/>
         </scene>
     </scenes>
     <resources>
