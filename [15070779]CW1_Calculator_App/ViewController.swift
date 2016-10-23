@@ -47,9 +47,13 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var apple10: draggable_UIImageView!
     
+    @IBOutlet weak var imgCloud1: UIImageView!
+
+    @IBOutlet weak var imgCloud2: UIImageView!
 
 
     
+
  
     
     //public variable set up to match user's answer to, will be assigned the correct value after Random numbers have been generated
@@ -324,6 +328,20 @@ class ViewController: UIViewController {
                 rect.size.height = 55
                 apple10.frame = rect
                 
+                rect = imgCloud1.frame
+                rect.origin.x = 0
+                rect.origin.y = -26
+                rect.size.width = 190
+                rect.size.height = 90
+                imgCloud1.frame = rect
+                
+                rect = imgCloud2.frame
+                rect.origin.x = 0
+                rect.origin.y = 65
+                rect.size.width = 190
+                rect.size.height = 90
+                imgCloud2.frame = rect
+                
             }
             
         }
@@ -512,6 +530,20 @@ class ViewController: UIViewController {
                 rect.size.width = 55
                 rect.size.height = 55
                 apple10.frame = rect
+                
+                rect = imgCloud1.frame
+                rect.origin.x = 0
+                rect.origin.y = -26
+                rect.size.width = 190
+                rect.size.height = 90
+                imgCloud1.frame = rect
+                
+                rect = imgCloud2.frame
+                rect.origin.x = 0
+                rect.origin.y = 65
+                rect.size.width = 190
+                rect.size.height = 90
+                imgCloud2.frame = rect
                
                 
             }
@@ -702,6 +734,22 @@ class ViewController: UIViewController {
                 rect.size.height = 60
                 apple10.frame = rect
                 
+                rect = imgCloud1.frame
+                rect.origin.x = 0
+                rect.origin.y = -26
+                rect.size.width = 190
+                rect.size.height = 90
+                imgCloud1.frame = rect
+                
+                rect = imgCloud2.frame
+                rect.origin.x = 0
+                rect.origin.y = 85
+                rect.size.width = 190
+                rect.size.height = 90
+                imgCloud2.frame = rect
+                
+                
+                
             }
             
         }
@@ -711,7 +759,35 @@ class ViewController: UIViewController {
         
     
     }
+    
+    func randomBetweenNumbers(firstNum: CGFloat, secondNum: CGFloat) -> CGFloat{
+        return CGFloat(arc4random()) / CGFloat(UINT32_MAX) * abs(firstNum - secondNum) + min(firstNum, secondNum)
+    }
  
+    
+    //clouds animation - random timing, all relative to screen size so should work on all screen sizes
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+  
+        
+        
+        imgCloud1.center.x += screenWidth!
+        imgCloud2.center.x += screenWidth!
+  
+        UIView.animate(withDuration: TimeInterval(randomBetweenNumbers(firstNum: 1.0,secondNum: 10.0)), delay: 0.0, options: [.repeat, .curveLinear], animations: {
+            self.imgCloud1.center.x -= self.screenWidth!
+         
+            })
+        
+        UIView.animate(withDuration: TimeInterval(randomBetweenNumbers(firstNum: 1.0,secondNum: 10.0)), delay: TimeInterval(randomBetweenNumbers(firstNum: 1.0,secondNum: 10.0)), options: [.repeat, .curveLinear], animations: {
+                self.imgCloud2.center.x -= self.view.bounds.width
+            })
+
+        
+        
+    }
+
     
     //handles button clicks to submit answer
     @IBAction func tuButton0(_ sender: AnyObject) {
