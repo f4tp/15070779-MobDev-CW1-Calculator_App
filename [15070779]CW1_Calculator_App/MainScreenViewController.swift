@@ -765,16 +765,16 @@ class ViewController: UIViewController {
     }
  
     
-    //clouds animation - random timing, all relative to screen size so should work on all screen sizes
+    //clouds animation - random timing, all relative to screen size so should work on all screen sizes. Cannot create independent class for this yet as the routine is relative to screen size and working inside of teh UIImageView sub class and gettign values out of the viewcontroller class into these might be tricky (maybe working with delegates) - if I get time I will look at doing this, but for now - leave them in here
     
     override func viewWillAppear(_ animated: Bool) {
-        
-  
-        
+        //set the x value of each cloud image to whatever it is at the moment + the width of the screen it is being viewed on >moves it off of the screen to the right
         
         imgCloud1.center.x += screenWidth!
         imgCloud2.center.x += screenWidth!
   
+        //animation routine, one for first cloud, one for second cloud. It animates the cloud by reducing the x value of each on screen by the width of the screen > moves them from off teh screen from the right to the left back on the screen
+        
         UIView.animate(withDuration: TimeInterval(randomBetweenNumbers(firstNum: 1.0,secondNum: 10.0)), delay: 0.0, options: [.repeat, .curveLinear], animations: {
             self.imgCloud1.center.x -= self.screenWidth!
          
@@ -789,7 +789,7 @@ class ViewController: UIViewController {
     }
 
     
-    //handles button clicks to submit answer
+    //handles button clicks to submit answer. Causes segue to WinScreen when answer is correct
     @IBAction func tuButton0(_ sender: AnyObject) {
         if (intTotal == 0) {
             self.performSegue(withIdentifier: "mainToWin", sender: nil)

@@ -10,31 +10,25 @@ import UIKit
 
 class flashingimage_UIImageView: UIImageView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-         }
-    */
-
- 
-    //this is needed in here but I can't get an event to fire it for each star added with this class as its super class
+    func randomBetweenNumbers(firstNum: CGFloat, secondNum: CGFloat) -> CGFloat{
+        return CGFloat(arc4random()) / CGFloat(UINT32_MAX) * abs(firstNum - secondNum) + min(firstNum, secondNum)
+    }
     
-    /*
-    UIView.animate(withDuration: 1.5, delay: 0.0, options: .autoreverse, animations: {
     
-    self.alpha -= 1.0
-    })
-
-*/
-    
- 
+    override func layoutSubviews() {
         
+        UIView.animate(withDuration: TimeInterval(randomBetweenNumbers(firstNum: 1.0,secondNum: 2.0)), delay: (TimeInterval(randomBetweenNumbers(firstNum: 0.1,secondNum: 1.0))), options: [.repeat, .autoreverse], animations: {
+            self.alpha -= 1.0
+            
+        })
+    }
+   
+    
 }
 
 
-   
 
-    
+
+
     
 
