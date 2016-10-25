@@ -41,6 +41,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C9DB0CE1DBE383600EECA9D /* UIImageView Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				2CCC03141DB3891700A6E7AE /* draggable:UIImageView.swift */,
+				2C9DB0A61DBCACE100EECA9D /* flashingimage:UIImageView.swift */,
+			);
+			name = "UIImageView Subclasses";
+			sourceTree = "<group>";
+		};
+		2C9DB0CF1DBE385A00EECA9D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2CCC03021DB3837D00A6E7AE /* MainScreenViewController.swift */,
+				2C9DB0A41DBBAC5300EECA9D /* WinScreenViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		2CCC02F41DB3837C00A6E7AE = {
 			isa = PBXGroup;
 			children = (
@@ -60,11 +78,9 @@
 		2CCC02FF1DB3837D00A6E7AE /* [15070779]CW1_Calculator_App */ = {
 			isa = PBXGroup;
 			children = (
-				2CCC03141DB3891700A6E7AE /* draggable:UIImageView.swift */,
-				2C9DB0A61DBCACE100EECA9D /* flashingimage:UIImageView.swift */,
+				2C9DB0CE1DBE383600EECA9D /* UIImageView Subclasses */,
+				2C9DB0CF1DBE385A00EECA9D /* ViewControllers */,
 				2CCC03001DB3837D00A6E7AE /* AppDelegate.swift */,
-				2CCC03021DB3837D00A6E7AE /* MainScreenViewController.swift */,
-				2C9DB0A41DBBAC5300EECA9D /* WinScreenViewController.swift */,
 				2CCC03041DB3837D00A6E7AE /* Main.storyboard */,
 				2CCC03071DB3837D00A6E7AE /* Assets.xcassets */,
 				2CCC03091DB3837D00A6E7AE /* LaunchScreen.storyboard */,

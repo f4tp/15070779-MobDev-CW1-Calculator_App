@@ -220,105 +220,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Star" id="PVH-zH-7Vw" userLabel="star1" customClass="flashingimage_UIImageView" customModule="_15070779_CW1_Calculator_App" customModuleProvider="target">
-                                <frame key="frameInset" minX="-35" width="77" height="74"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
-                                </accessibility>
-                            </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Star" id="nuT-JN-AUo" userLabel="star3" customClass="flashingimage_UIImageView" customModule="_15070779_CW1_Calculator_App" customModuleProvider="target">
-                                <frame key="frameInset" minX="183" minY="26" width="77" height="74"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
-                                </accessibility>
-                            </imageView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Star" id="Tyo-Zt-BE3" userLabel="star4" customClass="flashingimage_UIImageView" customModule="_15070779_CW1_Calculator_App" customModuleProvider="target">
-                                <frame key="frameInset" minX="286" minY="74" width="77" height="74"/>
+                                <frame key="frameInset" minX="366" minY="20" width="77" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
                                 </accessibility>
                             </imageView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Star" id="Xdg-gB-4FG" userLabel="star6" customClass="flashingimage_UIImageView" customModule="_15070779_CW1_Calculator_App" customModuleProvider="target">
-                                <frame key="frameInset" minX="209" minY="245" width="77" height="74"/>
+                                <frame key="frameInset" minX="326" minY="261" width="77" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
                                 </accessibility>
                             </imageView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Star" id="3Ji-4v-w2d" userLabel="star5" customClass="flashingimage_UIImageView" customModule="_15070779_CW1_Calculator_App" customModuleProvider="target">
-                                <frame key="frameInset" minX="-27" minY="222" width="77" height="74"/>
+                                <frame key="frameInset" minY="221" width="77" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
                                 </accessibility>
                             </imageView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Star" id="YH0-an-9J0" userLabel="star7" customClass="flashingimage_UIImageView" customModule="_15070779_CW1_Calculator_App" customModuleProvider="target">
-                                <frame key="frameInset" minX="-27" minY="376" width="77" height="74"/>
+                                <frame key="frameInset" minX="60" minY="412" width="77" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
                                 </accessibility>
                             </imageView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Star" id="p12-K9-pS2" userLabel="star10" customClass="flashingimage_UIImageView" customModule="_15070779_CW1_Calculator_App" customModuleProvider="target">
-                                <frame key="frameInset" minX="277" minY="335" width="77" height="74"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
-                                </accessibility>
-                            </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Star" id="1i0-wt-Vlj" userLabel="star12" customClass="flashingimage_UIImageView" customModule="_15070779_CW1_Calculator_App" customModuleProvider="target">
-                                <frame key="frameInset" minX="277" minY="474" width="77" height="74"/>
+                                <frame key="frameInset" minX="167" minY="541" width="77" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
                                 </accessibility>
                             </imageView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Star" id="3HR-sn-Dfi" userLabel="star9" customClass="flashingimage_UIImageView" customModule="_15070779_CW1_Calculator_App" customModuleProvider="target">
-                                <frame key="frameInset" minX="192" minY="395" width="77" height="74"/>
+                                <frame key="frameInset" minX="373" minY="486" width="77" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
                                 </accessibility>
                             </imageView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Star" id="HNA-CM-702" userLabel="star8" customClass="flashingimage_UIImageView" customModule="_15070779_CW1_Calculator_App" customModuleProvider="target">
-                                <frame key="frameInset" minX="88" minY="425" width="77" height="74"/>
+                                <frame key="frameInset" minX="290" minY="383" width="77" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
                                 </accessibility>
                             </imageView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Star" id="Thi-HW-ch3" userLabel="star11" customClass="flashingimage_UIImageView" customModule="_15070779_CW1_Calculator_App" customModuleProvider="target">
-                                <frame key="frameInset" minX="16" minY="516" width="77" height="74"/>
+                                <frame key="frameInset" minX="-22" minY="635" width="77" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
                                 </accessibility>
                             </imageView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Star" id="bY3-C1-6HP" userLabel="star2" customClass="flashingimage_UIImageView" customModule="_15070779_CW1_Calculator_App" customModuleProvider="target">
-                                <frame key="frameInset" minX="70" minY="42" width="77" height="74"/>
+                                <frame key="frameInset" minX="101" minY="28" width="77" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
                                 </accessibility>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RFT-4h-3BQ">
-                                <frame key="frameInset" minX="120" minY="287" width="81" height="79"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Play_Again_Symbol"/>
-                                <connections>
-                                    <action selector="btnReturnToMain:" destination="uip-mS-oN3" eventType="touchUpInside" id="Mfp-6A-yfD"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" misplaced="YES" id="GPz-jM-UjX">
-                                <frame key="frameInset" minY="-1" width="320" height="19"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Well Done! Try Again?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BOy-Wn-7k7">
-                                <frame key="frameInset" minX="23" minY="124" width="274" height="151"/>
+                                <frame key="frameInset" minX="70" minY="135" width="274" height="151"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="46"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -326,12 +292,53 @@
                                 <color key="shadowColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <size key="shadowOffset" width="5" height="-1"/>
                             </label>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Star" id="nuT-JN-AUo" userLabel="star3" customClass="flashingimage_UIImageView" customModule="_15070779_CW1_Calculator_App" customModuleProvider="target">
+                                <frame key="frameInset" minX="233" minY="55" width="77" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                </accessibility>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Star" id="1i0-wt-Vlj" userLabel="star12" customClass="flashingimage_UIImageView" customModule="_15070779_CW1_Calculator_App" customModuleProvider="target">
+                                <frame key="frameInset" minX="318" minY="642" width="77" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                </accessibility>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Star" id="PVH-zH-7Vw" userLabel="star1" customClass="flashingimage_UIImageView" customModule="_15070779_CW1_Calculator_App" customModuleProvider="target">
+                                <frame key="frameInset" minX="-35" minY="14" width="77" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                </accessibility>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RFT-4h-3BQ">
+                                <frame key="frameInset" minX="167" minY="365" width="81" height="79"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Play_Again_Symbol"/>
+                                <connections>
+                                    <action selector="btnReturnToMain:" destination="uip-mS-oN3" eventType="touchUpInside" id="Mfp-6A-yfD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="Fgw-o2-bo7"/>
                     <connections>
                         <outlet property="btnCauseSegue" destination="RFT-4h-3BQ" id="CUw-rl-Mp3"/>
+                        <outlet property="imgViewStar1" destination="PVH-zH-7Vw" id="DxB-KK-ZUk"/>
+                        <outlet property="imgViewStar10" destination="p12-K9-pS2" id="QBS-gU-1MO"/>
+                        <outlet property="imgViewStar11" destination="Thi-HW-ch3" id="5er-N9-ocl"/>
+                        <outlet property="imgViewStar12" destination="1i0-wt-Vlj" id="Bic-eF-Xcu"/>
+                        <outlet property="imgViewStar2" destination="bY3-C1-6HP" id="16S-tr-P78"/>
+                        <outlet property="imgViewStar3" destination="nuT-JN-AUo" id="R7n-Le-a4R"/>
+                        <outlet property="imgViewStar4" destination="Tyo-Zt-BE3" id="bOe-al-JVi"/>
+                        <outlet property="imgViewStar5" destination="3Ji-4v-w2d" id="9Rl-KO-AWc"/>
+                        <outlet property="imgViewStar6" destination="Xdg-gB-4FG" id="VKJ-gZ-RgB"/>
+                        <outlet property="imgViewStar7" destination="YH0-an-9J0" id="Oc4-Gg-0pe"/>
+                        <outlet property="imgViewStar8" destination="HNA-CM-702" id="gXN-yT-inm"/>
+                        <outlet property="imgViewStar9" destination="3HR-sn-Dfi" id="qCa-5J-amP"/>
                         <outlet property="lblWellDoneMessage" destination="BOy-Wn-7k7" id="kuk-3g-nVe"/>
                         <segue destination="BYZ-38-t0r" kind="modal" identifier="winToMain" modalTransitionStyle="crossDissolve" id="aYf-nz-2oD"/>
                     </connections>

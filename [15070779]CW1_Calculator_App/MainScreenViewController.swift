@@ -59,7 +59,7 @@ class ViewController: UIViewController {
     //public variable set up to match user's answer to, will be assigned the correct value after Random numbers have been generated
     var intTotal = 10
     
-    //restart the app calls viewdidload function
+    //restarts the app on click - calls viewdidload function and viewWillLayoutSubview to restart animations
     @IBAction func btnReload(_ sender: AnyObject) {
         
         viewDidLoad()
