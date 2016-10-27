@@ -8,9 +8,14 @@
 
 import UIKit
 
+
+
 class ViewController: UIViewController {
 
+    
+    
     //outlets for main components of initial screen
+    
     
     @IBOutlet weak var button0: UIButton!
     @IBOutlet weak var button1: UIButton!
@@ -94,15 +99,15 @@ class ViewController: UIViewController {
         screenWidth = screenSize?.width
         screenHeight = screenSize?.height
         
-        
+
                 
 
         
         
+        //iphone 4 routine cancelled as Module Leader suggested not to cater for it due to simulator not being available & not being able to run Swift developments for iOS 10
         
-        if (screenWidth == 320.0 && screenHeight == 480.0) {
-            PhoneScreenType = "4"
-        }
+        //if (screenWidth == 320.0 && screenHeight == 480.0) {            PhoneScreenType = "4"
+        //}
         
         if (screenWidth == 320.0 && screenHeight == 568.0) {
             PhoneScreenType = "5"
@@ -126,7 +131,8 @@ class ViewController: UIViewController {
 
     override func viewWillLayoutSubviews() {
         
-        
+        //iphone 4 routines taken out - see reason above for explanation
+        /*
         if PhoneScreenType == "4" {
             
             
@@ -139,18 +145,18 @@ class ViewController: UIViewController {
                 
             }
         
-        }
-        
+        //}
+        */
         
         if PhoneScreenType == "5" {
             
             
-            if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft || UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
+            //if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft || UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
                 
                 
-            }
+            //}
             
-            else{
+            //else{
                 
                 
                 var rect = button0.frame
@@ -342,7 +348,7 @@ class ViewController: UIViewController {
                 rect.size.height = 90
                 imgCloud2.frame = rect
                 
-            }
+            //}
             
         }
         
@@ -855,5 +861,9 @@ class ViewController: UIViewController {
             self.performSegue(withIdentifier: "mainToWin", sender: nil)
         }
     }
+    
+    
+    public func tester (){
+            }
     
 }

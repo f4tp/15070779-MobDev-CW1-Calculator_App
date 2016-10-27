@@ -30,10 +30,17 @@ class WinScreenViewController: UIViewController {
     var screenWidth:CGFloat?
     var screenHeight:CGFloat?
     var PhoneScreenType: NSString?
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        
+      
+        
+        
+        
         screenSize = UIScreen.main.bounds
         screenWidth = screenSize?.width
         screenHeight = screenSize?.height
