@@ -16,9 +16,14 @@ class draggable_UIImageView: UIImageView {
     var screenWidth:CGFloat?
     var screenHeight:CGFloat?
     var PhoneScreenType: NSString?
+    var newCenter = CGPoint (x:0, y:0)
+    var applesPlacedLeft: Int = 0
+    var applesPlacedRight: Int = 0
+    
     
     
     override func layoutSubviews() {
+        
         
         screenSize = UIScreen.main.bounds
         screenWidth = screenSize?.width
@@ -55,7 +60,7 @@ class draggable_UIImageView: UIImageView {
         
         //self.center = CGPoint(x: self.center.x+dx, y: self.center.y+dy)
         
-        var newCenter = CGPoint(x: self.center.x+dx, y: self.center.y+dy)
+        newCenter = CGPoint(x: self.center.x+dx, y: self.center.y+dy)
         
         //self.center = newCenter
         
@@ -70,8 +75,8 @@ class draggable_UIImageView: UIImageView {
                 self.center = newCenter
             }
             
-            else if newCenter.y > screenHeight! - 20 {
-                newCenter.y = screenHeight! - 20
+            else if newCenter.y > screenHeight! - 40 {
+                newCenter.y = screenHeight! - 40
                 self.center = newCenter
             }
                 
@@ -107,8 +112,8 @@ class draggable_UIImageView: UIImageView {
                 self.center = newCenter
             }
                 
-            else if newCenter.y > screenHeight! - 20 {
-                newCenter.y = screenHeight! - 20
+            else if newCenter.y > screenHeight! - 40 {
+                newCenter.y = screenHeight! - 40
                 self.center = newCenter
             }
                 
@@ -144,8 +149,8 @@ class draggable_UIImageView: UIImageView {
                 self.center = newCenter
             }
                 
-            else if newCenter.y > screenHeight! - 25 {
-                newCenter.y = screenHeight! - 25
+            else if newCenter.y > screenHeight! - 45 {
+                newCenter.y = screenHeight! - 45
                 self.center = newCenter
             }
                 
@@ -178,32 +183,62 @@ class draggable_UIImageView: UIImageView {
  
     }
     
-    /*
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-     
-        touchReleaseFired = true
         
-        //3 fire the method at the right time (on the event that the touchesEnded)
-        if (delegate == nil){
-            
-            delegate!.touchFinished(varTouchFin: touchReleaseFired as! DataSentDelegate as! Bool)
-     
-        }
-        
-        
-            */
-     
         /*
-        if (self.frame.intersects(self.frame)){
+     
+        if PhoneScreenType == "5"  {
+            
+            if newCenter.y < 397 && newCenter.x < 127{
+                
+                if applesPlacedLeft == 0 {
+                
+                newCenter.y = 322
+                newCenter.x = 50
+                //self.isUserInteractionEnabled = false
+                self.center = newCenter
+                applesPlacedLeft = applesPlacedLeft + 1
+                    
+                }
+                
+                else if applesPlacedLeft == 1 {
+                    
+                    newCenter.y = 322
+                    newCenter.x = 120
+                    self.isUserInteractionEnabled = false
+                    self.center = newCenter
+                    applesPlacedLeft = applesPlacedLeft + 1
+                    
+                }
+                
+                else if applesPlacedLeft == 2 {
+                    
+                    newCenter.y = 356
+                    newCenter.x = 25
+                    self.isUserInteractionEnabled = false
+                    applesPlacedLeft = applesPlacedLeft + 1
+                    self.center = newCenter
+                    
+                }
+                
+                else if applesPlacedLeft == 3 {
+                    
+                    newCenter.y = 356
+                    newCenter.x = 85
+                    self.isUserInteractionEnabled = false
+                    applesPlacedLeft = applesPlacedLeft + 1
+                    self.center = newCenter
+                    
+                }
             
             
             
-            self.isHidden = true
+            }
         }
  
-        
+ */
     }
-        */
     
     
-}
+ }

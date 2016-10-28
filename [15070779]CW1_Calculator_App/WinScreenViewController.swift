@@ -25,19 +25,25 @@ class WinScreenViewController: UIViewController {
     @IBOutlet weak var imgViewStar11: flashingimage_UIImageView!
     @IBOutlet weak var imgViewStar12: flashingimage_UIImageView!
     
+    @IBOutlet weak var lblAnswerFormulae: UILabel!
+    
+    @IBOutlet weak var imgScroll: UIImageView!
+   
     
     var screenSize: CGRect?
     var screenWidth:CGFloat?
     var screenHeight:CGFloat?
     var PhoneScreenType: NSString?
+    var stringRandNo1 = String()
+    var stringRandNo2 = String()
+    var stringAnswer = String()
   
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        
-      
+        lblAnswerFormulae.text = stringRandNo1 + " + " + stringRandNo2 + " = " + stringAnswer
+  
         
         
         
@@ -98,17 +104,34 @@ class WinScreenViewController: UIViewController {
          //add on the value of the width of the screen from the x value of this particular button item > pulls item off of screen to the right
         btnCauseSegue.center.x += view.bounds.width
         
+        lblAnswerFormulae.center.x -= view.bounds.width
+        imgScroll.center.x += view.bounds.width
+        
+        
+        
+        
+        
         
         //animate the well done label in from the left to the right
         
+        
         UIView.animate(withDuration: 0.5, animations: {
-            self.lblWellDoneMessage.center.x += self.view.bounds.width
+            self.lblAnswerFormulae.center.x += self.view.bounds.width
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                self.imgScroll.center.x -= self.view.bounds.width
+            
+            
+                UIView.animate(withDuration: 0.5, delay: 0.5, animations: {
+                    self.lblWellDoneMessage.center.x += self.view.bounds.width
             
             
             //animate the button in from the right to the left, with a delay of 0.3, nested inside previous animation - makes delay relative to entrance of first animation
             
-            UIView.animate(withDuration: 0.5, delay: 0.3, animations: {
-                self.btnCauseSegue.center.x -= self.view.bounds.width
+                    UIView.animate(withDuration: 2.5, delay: 1.0, animations: {
+                        self.btnCauseSegue.center.x -= self.view.bounds.width
+                    })
+                })
             })
         })
         
@@ -232,11 +255,25 @@ class WinScreenViewController: UIViewController {
                 lblWellDoneMessage.frame = rect
                 
                 rect = btnCauseSegue.frame
-                rect.origin.x = 120
-                rect.origin.y = 287
-                rect.size.width = 81
-                rect.size.height = 79
+                rect.origin.x = 100
+                rect.origin.y = 290
+                rect.size.width = 120
+                rect.size.height = 120
                 btnCauseSegue.frame = rect
+                
+                rect = imgScroll.frame
+                rect.origin.x = 0
+                rect.origin.y = 38
+                rect.size.width = 320
+                rect.size.height = 103
+                imgScroll.frame = rect
+                
+                rect = lblAnswerFormulae.frame
+                rect.origin.x = 23
+                rect.origin.y = 58
+                rect.size.width = 278
+                rect.size.height = 67
+                lblAnswerFormulae.frame = rect
                 
                 
             }
@@ -337,17 +374,31 @@ class WinScreenViewController: UIViewController {
                 
                 rect = lblWellDoneMessage.frame
                 rect.origin.x = 50
-                rect.origin.y = 124
+                rect.origin.y = 134
                 rect.size.width = 274
                 rect.size.height = 151
                 lblWellDoneMessage.frame = rect
                 
                 rect = btnCauseSegue.frame
-                rect.origin.x = 147
-                rect.origin.y = 294
-                rect.size.width = 81
-                rect.size.height = 79
+                rect.origin.x = 130
+                rect.origin.y = 314
+                rect.size.width = 100
+                rect.size.height = 100
                 btnCauseSegue.frame = rect
+                
+                rect = imgScroll.frame
+                rect.origin.x = 0
+                rect.origin.y = 38
+                rect.size.width = 375
+                rect.size.height = 103
+                imgScroll.frame = rect
+                
+                rect = lblAnswerFormulae.frame
+                rect.origin.x = 52
+                rect.origin.y = 58
+                rect.size.width = 278
+                rect.size.height = 67
+                lblAnswerFormulae.frame = rect
                 
                 
             }
@@ -372,15 +423,15 @@ class WinScreenViewController: UIViewController {
                 imgViewStar1.frame = rect
                 
                 rect = imgViewStar2.frame
-                rect.origin.x = 101
+                rect.origin.x = 130
                 rect.origin.y = 28
                 rect.size.width = 77
                 rect.size.height = 74
                 imgViewStar2.frame = rect
                 
                 rect = imgViewStar3.frame
-                rect.origin.x = 233
-                rect.origin.y = 55
+                rect.origin.x = 200
+                rect.origin.y = 630
                 rect.size.width = 77
                 rect.size.height = 74
                 imgViewStar3.frame = rect
@@ -428,7 +479,7 @@ class WinScreenViewController: UIViewController {
                 imgViewStar9.frame = rect
                 
                 rect = imgViewStar10.frame
-                rect.origin.x = 167
+                rect.origin.x = 110
                 rect.origin.y = 541
                 rect.size.width = 77
                 rect.size.height = 74
@@ -451,20 +502,35 @@ class WinScreenViewController: UIViewController {
                 //frame for well done message increased and centred so font can be bigger on plus screen
                 rect = lblWellDoneMessage.frame
                 rect.origin.x = 48
-                rect.origin.y = 135
+                rect.origin.y = 175
                 rect.size.width = 315
                 rect.size.height = 240
                 lblWellDoneMessage.frame = rect
                 
                 rect = btnCauseSegue.frame
-                rect.origin.x = 167
-                rect.origin.y = 365
-                rect.size.width = 81
-                rect.size.height = 79
+                rect.origin.x = 130
+                rect.origin.y = 440
+                rect.size.width = 150
+                rect.size.height = 148
                 btnCauseSegue.frame = rect
                 
-                //font increased for plus sized scr
+                rect = imgScroll.frame
+                rect.origin.x = 0
+                rect.origin.y = 100
+                rect.size.width = 414
+                rect.size.height = 103
+                imgScroll.frame = rect
+                
+                rect = lblAnswerFormulae.frame
+                rect.origin.x = 35
+                rect.origin.y = 110
+                rect.size.width = 350
+                rect.size.height = 83
+                lblAnswerFormulae.frame = rect
+                
+                //font increased for plus sized screen
                 lblWellDoneMessage.font = lblWellDoneMessage.font.withSize(66.0)
+                lblAnswerFormulae.font = lblWellDoneMessage.font.withSize(72.0)
 
             }
             

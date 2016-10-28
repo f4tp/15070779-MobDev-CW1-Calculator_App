@@ -27,10 +27,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var button7: UIButton!
     @IBOutlet weak var button8: UIButton!
     @IBOutlet weak var button9: UIButton!
-    @IBOutlet weak var lblNumber1: UILabel!
-    @IBOutlet weak var lblNumber2: UILabel!
-    @IBOutlet weak var lblPlusSign: UILabel!
-    @IBOutlet weak var lblEqualsQM: UILabel!
+    //@IBOutlet weak var lblNumber1: UILabel!
+    @IBOutlet weak var lblFormulae: UILabel!
+    //@IBOutlet weak var lblNumber2: UILabel!
+    //@IBOutlet weak var lblPlusSign: UILabel!
+    //@IBOutlet weak var lblEqualsQM: UILabel!
     @IBOutlet weak var plateImage: UIImageView!
     @IBOutlet weak var apple1: draggable_UIImageView!
     
@@ -63,13 +64,11 @@ class ViewController: UIViewController {
     
     //public variable set up to match user's answer to, will be assigned the correct value after Random numbers have been generated
     var intTotal = 10
+    //random numbers generated
+    let intRandNumber1: Int = Int(arc4random_uniform(5))
+    let intRandNumber2: Int = Int(arc4random_uniform(5))
     
     //restarts the app on click - calls viewdidload function and viewWillLayoutSubview to restart animations
-    @IBAction func btnReload(_ sender: AnyObject) {
-        
-        viewDidLoad()
-        viewWillLayoutSubviews()
-    }
     
     
     //variables for testing screen size to programmatically set up the layout
@@ -87,12 +86,11 @@ class ViewController: UIViewController {
         //routines for basic functionality
 
         
-        let intNumber1: Int = Int(arc4random_uniform(5))
-        let intNumber2: Int = Int(arc4random_uniform(6))
-        intTotal = intNumber1 + intNumber2
         
-        lblNumber1.text = String(intNumber1)
-        lblNumber2.text = String(intNumber2)
+        intTotal = intRandNumber1 + intRandNumber2
+        
+        lblFormulae.text = String(intRandNumber1) + " + " + String(intRandNumber2) + " = ?"
+        
         
         //routines for programmatically setting up layout - reports screen size so the right routine can run and set up the layout based on how big the screen is
         screenSize = UIScreen.main.bounds
@@ -229,34 +227,14 @@ class ViewController: UIViewController {
                 rect.size.height = 55
                 button9.frame = rect
                 
-                rect = lblNumber1.frame
-                rect.origin.x = 10
+                rect = lblFormulae.frame
+                rect.origin.x = 5
                 rect.origin.y = 165
-                rect.size.width = 65
+                rect.size.width = 315
                 rect.size.height = 100
-                lblNumber1.frame = rect
+                lblFormulae.frame = rect
                 
-                rect = lblPlusSign.frame
-                rect.origin.x = 75
-                rect.origin.y = 165
-                rect.size.width = 65
-                rect.size.height = 100
-                lblPlusSign.frame = rect
-                
-                rect = lblNumber2.frame
-                rect.origin.x = 140
-                rect.origin.y = 165
-                rect.size.width = 65
-                rect.size.height = 100
-                lblNumber2.frame = rect
-                
-                rect = lblEqualsQM.frame
-                rect.origin.x = 205
-                rect.origin.y = 165
-                rect.size.width = 195
-                rect.size.height = 100
-                lblEqualsQM.frame = rect
-                
+            
                 rect = plateImage.frame
                 rect.origin.x = 0
                 rect.origin.y = 375
@@ -432,33 +410,12 @@ class ViewController: UIViewController {
                 rect.size.height = 55
                 button9.frame = rect
                 
-                rect = lblNumber1.frame
-                rect.origin.x = 20
+                rect = lblFormulae.frame
+                rect.origin.x = 5
                 rect.origin.y = 190
-                rect.size.width = 75
+                rect.size.width = 370
                 rect.size.height = 100
-                lblNumber1.frame = rect
-                
-                rect = lblPlusSign.frame
-                rect.origin.x = 95
-                rect.origin.y = 190
-                rect.size.width = 75
-                rect.size.height = 100
-                lblPlusSign.frame = rect
-                
-                rect = lblNumber2.frame
-                rect.origin.x = 170
-                rect.origin.y = 190
-                rect.size.width = 75
-                rect.size.height = 100
-                lblNumber2.frame = rect
-                
-                rect = lblEqualsQM.frame
-                rect.origin.x = 245
-                rect.origin.y = 190
-                rect.size.width = 225
-                rect.size.height = 100
-                lblEqualsQM.frame = rect
+                lblFormulae.frame = rect
                 
                 rect = plateImage.frame
                 rect.origin.x = 0
@@ -635,33 +592,12 @@ class ViewController: UIViewController {
                 rect.size.height = 60
                 button9.frame = rect
                 
-                rect = lblNumber1.frame
-                rect.origin.x = 30
+                rect = lblFormulae.frame
+                rect.origin.x = 5
                 rect.origin.y = 190
-                rect.size.width = 75
-                rect.size.height = 100
-                lblNumber1.frame = rect
-                
-                rect = lblPlusSign.frame
-                rect.origin.x = 105
-                rect.origin.y = 190
-                rect.size.width = 75
-                rect.size.height = 100
-                lblPlusSign.frame = rect
-                
-                rect = lblNumber2.frame
-                rect.origin.x = 180
-                rect.origin.y = 190
-                rect.size.width = 75
-                rect.size.height = 100
-                lblNumber2.frame = rect
-                
-                rect = lblEqualsQM.frame
-                rect.origin.x = 255
-                rect.origin.y = 190
-                rect.size.width = 225
-                rect.size.height = 100
-                lblEqualsQM.frame = rect
+                rect.size.width = 409
+                rect.size.height = 150
+                lblFormulae.frame = rect
                 
                 rect = plateImage.frame
                 rect.origin.x = 0
@@ -754,7 +690,8 @@ class ViewController: UIViewController {
                 rect.size.height = 90
                 imgCloud2.frame = rect
                 
-                
+                //increase fontsize for plus sized screen
+                lblFormulae.font = lblFormulae.font.withSize(72.0)
                 
             }
             
@@ -863,7 +800,21 @@ class ViewController: UIViewController {
     }
     
     
-    public func tester (){
-            }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        //if (segue.identifier == "mainToWin"){
+            
+            let DestViewController  = segue.destination as! WinScreenViewController
+            
+            DestViewController.stringRandNo1 = String(intRandNumber1)
+        
+            DestViewController.stringRandNo2 = String(intRandNumber2)
+        
+            DestViewController.stringAnswer = String(intTotal)
+            
+        //}
+        
+        
+    }
     
 }

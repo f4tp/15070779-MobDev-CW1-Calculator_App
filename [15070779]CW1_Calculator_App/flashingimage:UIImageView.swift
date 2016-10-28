@@ -17,6 +17,8 @@ class flashingimage_UIImageView: UIImageView {
     
     override func layoutSubviews() {
         
+        self.alpha = (randomBetweenNumbers(firstNum: 0.2,secondNum: 1.0))
+        
         UIView.animate(withDuration: TimeInterval(randomBetweenNumbers(firstNum: 1.0,secondNum: 2.0)), delay: (TimeInterval(randomBetweenNumbers(firstNum: 0.1,secondNum: 1.0))), options: [.repeat, .autoreverse], animations: {
             self.alpha -= 1.0
             
