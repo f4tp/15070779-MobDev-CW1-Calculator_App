@@ -66,7 +66,7 @@ class draggable_UIImageView: UIImageView {
         
         
         
-        //constrain movements
+        //constrain movements based on screen size
         
         if PhoneScreenType == "5" {
             
@@ -183,7 +183,7 @@ class draggable_UIImageView: UIImageView {
  
     }
     
-    
+    //implemented to 'snap' apples into place when the touch has finished
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         /*

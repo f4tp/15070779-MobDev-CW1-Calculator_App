@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import AVFoundation
 
 class WinScreenViewController: UIViewController {
 
+    
+    var audioPlayer: AVAudioPlayer!
     @IBOutlet weak var lblWellDoneMessage: UILabel!
     @IBOutlet weak var btnCauseSegue: UIButton!
     @IBOutlet weak var imgViewStar1: flashingimage_UIImageView!
@@ -42,6 +45,8 @@ class WinScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        playsound(soundTitle: "welldone", soundOfType: "wav")
+        
         lblAnswerFormulae.text = stringRandNo1 + " + " + stringRandNo2 + " = " + stringAnswer
   
         
@@ -128,7 +133,7 @@ class WinScreenViewController: UIViewController {
             
             //animate the button in from the right to the left, with a delay of 0.3, nested inside previous animation - makes delay relative to entrance of first animation
             
-                    UIView.animate(withDuration: 2.5, delay: 1.0, animations: {
+                    UIView.animate(withDuration: 2.5, delay: 4.0, animations: {
                         self.btnCauseSegue.center.x -= self.view.bounds.width
                     })
                 })
@@ -534,11 +539,44 @@ class WinScreenViewController: UIViewController {
 
             }
             
+            
+            
         }
     
+        
+        
         }
     
+    public func playsound(soundTitle: String, soundOfType: String){
+        
+       
+        
+        let audioFilePath = Bundle.main.path(forResource: soundTitle, ofType: soundOfType)
+        
+        if audioFilePath != nil {
+            
+            let audioFileUrl = NSURL.fileURL(withPath: audioFilePath!)
+            
+            
+            do{
+                
+                
+                try audioPlayer = AVAudioPlayer(contentsOf: audioFileUrl)
+                audioPlayer.play()
+            }
+                
+            catch  {
+                
+                //no catch statement implemented, this will be on a future revision
+            }
+            
+            
+        }
+        
+        
+    }
+
     
-    
+        
  
 }
