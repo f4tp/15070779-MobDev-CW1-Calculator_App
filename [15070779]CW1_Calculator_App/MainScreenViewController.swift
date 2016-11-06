@@ -9,10 +9,35 @@
 import UIKit
 import AVFoundation //framework that handles playing sounds in the app
 
+//project global variables - all need to be accessed by other swift files so have been declared outside of class
+
+//instance of audio player to handle sound playing,
+var audioPlayer: AVAudioPlayer!
+
+
+//random integers to create the math formulae, randomised with viewDidLoad
+var intRandNumber1: Int = 0
+var intRandNumber2: Int = 0
+
+//global variable set up to match user's answer to, will be assigned the correct value after Random numbers have been generated (viewDidLoad
+var intTotal:Int = 0
+
 
 class ViewController: UIViewController {
 
-//@@@@@@@@@@ OUTLETS @@@@@@@@@@
+
+//@@@@@@@@ GLOBAL VARIABLES @@@@@@@@@@
+    
+    //draggedView global variable instance
+    var draggedView: UIView!
+    
+
+    var screenSize: CGRect?
+    var screenWidth:CGFloat?
+    var screenHeight:CGFloat?
+    var PhoneScreenType: NSString?
+    
+    //@@@@@@@@@@ OUTLETS @@@@@@@@@@
     
     @IBOutlet weak var button0: UIButton!
     @IBOutlet weak var button1: UIButton!
@@ -48,22 +73,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var UIIVappleCatcherRight3: UIImageView!
     @IBOutlet weak var UIIVappleCatcherRight4: UIImageView!
     
-//@@@@@@@@ GLOBAL VARIABLES @@@@@@@@@@
     
-    //instance of audio player to handle sound playing
-    var audioPlayer: AVAudioPlayer!
 
-    //random integer numbers generated for sum formulae
-    let intRandNumber1: Int = Int(arc4random_uniform(5))
-    let intRandNumber2: Int = Int(arc4random_uniform(5))
-    //public variable set up to match user's answer to, will be assigned the correct value after Random numbers have been generated
-    var intTotal:Int = 0
-    //variables for testing screen size to programmatically set up the layout
-    var screenSize: CGRect?
-    var screenWidth:CGFloat?
-    var screenHeight:CGFloat?
-    var PhoneScreenType: NSString?
-    //instances of Pan gesture - to detect drag user interaction for each apple, and to controls state.ended to test to see if drag has ended to snap apples into place
+    
+    //variables for testing screen size to programmatically set up the layout, needs to be global as more than one function has access to these values (e.g. screen size function and animation)
+
+    //instances of Pan gesture - to detect drag user interaction for each apple, and to controls state.ended to test to see if drag has ended to snap apples into place, have to be global as they are accessed in different procedures - e.g. dragUIImageView(), and snapToApples()
     var gesture = UIPanGestureRecognizer()
     var gesture2 = UIPanGestureRecognizer()
     var gesture3 = UIPanGestureRecognizer()
@@ -74,16 +89,22 @@ class ViewController: UIViewController {
     var gesture8 = UIPanGestureRecognizer()
     var gesture9 = UIPanGestureRecognizer()
     var gesture10 = UIPanGestureRecognizer()
+    
+    //variable tells the program whenteh user has finished dragging an apple, global as it needs to be updated from the dragUIImageView() and the snapToApples() procedures
     var gestureEnded: Bool = false
  
 
-    //@@@@@ DO I STILL NEED THIS?
-    var draggedView: UIView!
+    
     
 //@@@@@@@@@@ OVERRIDDEN FUNCTIONS FROM SUPER CLASS @@@@@@@@@@
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        //random integer numbers generated for sum formulae, global as difference functiosn need access to these - e.g. sending across in the segue - used in  the view for both viewcontrollers
+        intRandNumber1 = Int(arc4random_uniform(5))
+        intRandNumber2 = Int(arc4random_uniform(5))
         
         //onload, initialise the panGesture mechanism, will test to see if the gesture state has ended later to snap apples into place
         gesture = UIPanGestureRecognizer(target: self, action: #selector(dragUIImageView))
@@ -121,6 +142,8 @@ class ViewController: UIViewController {
         
         lblFormulae.text = String(intRandNumber1) + " + " + String(intRandNumber2) + " = ?"
         
+        
+        //play correct sound based on random integers generated
         playCorrectSound()
         
         //routines for programmatically setting up layout - reports screen size so the right routine can run and set up the layout based on how big the screen is
@@ -157,6 +180,7 @@ class ViewController: UIViewController {
     
     //programmatically sets up the layout of this view
     override func viewWillLayoutSubviews() {
+        
         
         
         UIIVappleCatcherLeft1.layer.borderColor = UIColor.black.cgColor
@@ -363,7 +387,7 @@ class ViewController: UIViewController {
             
             rect = UIIVappleCatcherLeft2.frame
             rect.origin.x = 0
-            rect.origin.y = 335
+            rect.origin.y = 345
             rect.size.width = 80
             rect.size.height = 80
             UIIVappleCatcherLeft2.frame = rect
@@ -377,7 +401,7 @@ class ViewController: UIViewController {
             
             rect = UIIVappleCatcherLeft4.frame
             rect.origin.x = 80
-            rect.origin.y = 335
+            rect.origin.y = 345
             rect.size.width = 80
             rect.size.height = 80
             UIIVappleCatcherLeft4.frame = rect
@@ -391,7 +415,7 @@ class ViewController: UIViewController {
             
             rect = UIIVappleCatcherRight2.frame
             rect.origin.x = 160
-            rect.origin.y = 335
+            rect.origin.y = 345
             rect.size.width = 80
             rect.size.height = 80
             UIIVappleCatcherRight2.frame = rect
@@ -405,7 +429,7 @@ class ViewController: UIViewController {
             
             rect = UIIVappleCatcherRight4.frame
             rect.origin.x = 240
-            rect.origin.y = 335
+            rect.origin.y = 345
             rect.size.width = 80
             rect.size.height = 80
             UIIVappleCatcherRight4.frame = rect
@@ -418,411 +442,465 @@ class ViewController: UIViewController {
         
         if PhoneScreenType == "6.7" {
             
-                var rect = button0.frame
-                rect.origin.x = 20
-                rect.origin.y = 20
-                rect.size.width = 55
-                rect.size.height = 55
-                button0.frame = rect
-                
-                rect = button1.frame
-                rect.origin.x = 90
-                rect.origin.y = 20
-                rect.size.width = 55
-                rect.size.height = 55
-                button1.frame = rect
-                
-                rect = button2.frame
-                rect.origin.x = 160
-                rect.origin.y = 20
-                rect.size.width = 55
-                rect.size.height = 55
-                button2.frame = rect
-                
-                rect = button3.frame
-                rect.origin.x = 230
-                rect.origin.y = 20
-                rect.size.width = 55
-                rect.size.height = 55
-                button3.frame = rect
-                
-                rect = button4.frame
-                rect.origin.x = 300
-                rect.origin.y = 20
-                rect.size.width = 55
-                rect.size.height = 55
-                button4.frame = rect
-                
-                rect = button5.frame
-                rect.origin.x = 20
-                rect.origin.y = 100
-                rect.size.width = 55
-                rect.size.height = 55
-                button5.frame = rect
-                
-                rect = button6.frame
-                rect.origin.x = 90
-                rect.origin.y = 100
-                rect.size.width = 55
-                rect.size.height = 55
-                button6.frame = rect
-                
-                rect = button7.frame
-                rect.origin.x = 160
-                rect.origin.y = 100
-                rect.size.width = 55
-                rect.size.height = 55
-                button7.frame = rect
-                
-                rect = button8.frame
-                rect.origin.x = 230
-                rect.origin.y = 100
-                rect.size.width = 55
-                rect.size.height = 55
-                button8.frame = rect
-                
-                rect = button9.frame
-                rect.origin.x = 300
-                rect.origin.y = 100
-                rect.size.width = 55
-                rect.size.height = 55
-                button9.frame = rect
-                
-                rect = lblFormulae.frame
-                rect.origin.x = 5
-                rect.origin.y = 190
-                rect.size.width = 370
-                rect.size.height = 100
-                lblFormulae.frame = rect
-                
-                rect = plateImage.frame
-                rect.origin.x = 0
-                rect.origin.y = 420
-                rect.size.width = 375
-                rect.size.height = 300
-                plateImage.frame = rect
-                
-                rect = apple1.frame
-                rect.origin.x = 45
-                rect.origin.y = 528
-                rect.size.width = 55
-                rect.size.height = 55
-                apple1.frame = rect
-                
-                rect = apple2.frame
-                rect.origin.x = 100
-                rect.origin.y = 510
-                rect.size.width = 55
-                rect.size.height = 55
-                apple2.frame = rect
-                
-                rect = apple3.frame
-                rect.origin.x = 165
-                rect.origin.y = 510
-                rect.size.width = 55
-                rect.size.height = 55
-                apple3.frame = rect
-                
-                rect = apple4.frame
-                rect.origin.x = 225
-                rect.origin.y = 510
-                rect.size.width = 55
-                rect.size.height = 55
-                apple4.frame = rect
-                
-                rect = apple5.frame
-                rect.origin.x = 290
-                rect.origin.y = 528
-                rect.size.width = 55
-                rect.size.height = 55
-                apple5.frame = rect
-                
-                rect = apple6.frame
-                rect.origin.x = 130
-                rect.origin.y = 532
-                rect.size.width = 55
-                rect.size.height = 55
-                apple6.frame = rect
-                
-                rect = apple7.frame
-                rect.origin.x = 100
-                rect.origin.y = 555
-                rect.size.width = 55
-                rect.size.height = 55
-                apple7.frame = rect
-                
-                rect = apple8.frame
-                rect.origin.x = 165
-                rect.origin.y = 555
-                rect.size.width = 55
-                rect.size.height = 55
-                apple8.frame = rect
-                
-                rect = apple9.frame
-                rect.origin.x = 225
-                rect.origin.y = 555
-                rect.size.width = 55
-                rect.size.height = 55
-                apple9.frame = rect
-                
-                rect = apple10.frame
-                rect.origin.x = 195
-                rect.origin.y = 532
-                rect.size.width = 55
-                rect.size.height = 55
-                apple10.frame = rect
-                
-                rect = imgCloud1.frame
-                rect.origin.x = 0
-                rect.origin.y = -26
-                rect.size.width = 190
-                rect.size.height = 90
-                imgCloud1.frame = rect
-                
-                rect = imgCloud2.frame
-                rect.origin.x = 0
-                rect.origin.y = 65
-                rect.size.width = 190
-                rect.size.height = 90
-                imgCloud2.frame = rect
-                
-                rect = UIIVappleCatcherLeft1.frame
-                rect.origin.x = 0
-                rect.origin.y = 285
-                rect.size.width = 93
-                rect.size.height = 90
-                UIIVappleCatcherLeft1.frame = rect
-                
-                rect = UIIVappleCatcherLeft2.frame
-                rect.origin.x = 0
-                rect.origin.y = 375
-                rect.size.width = 93
-                rect.size.height = 90
-                UIIVappleCatcherLeft2.frame = rect
-                
-                rect = UIIVappleCatcherLeft3.frame
-                rect.origin.x = 93
-                rect.origin.y = 285
-                rect.size.width = 94
-                rect.size.height = 90
-                UIIVappleCatcherLeft3.frame = rect
-                
-                rect = UIIVappleCatcherLeft4.frame
-                rect.origin.x = 93
-                rect.origin.y = 375
-                rect.size.width = 94
-                rect.size.height = 90
-                UIIVappleCatcherLeft4.frame = rect
-                
-                rect = UIIVappleCatcherRight1.frame
-                rect.origin.x = 187
-                rect.origin.y = 285
-                rect.size.width = 93
-                rect.size.height = 90
-                UIIVappleCatcherRight1.frame = rect
-                
-                rect = UIIVappleCatcherRight2.frame
-                rect.origin.x = 187
-                rect.origin.y = 375
-                rect.size.width = 93
-                rect.size.height = 90
-                UIIVappleCatcherRight2.frame = rect
-                
-                rect = UIIVappleCatcherRight3.frame
-                rect.origin.x = 280
-                rect.origin.y = 285
-                rect.size.width = 94
-                rect.size.height = 90
-                UIIVappleCatcherRight3.frame = rect
-                
-                rect = UIIVappleCatcherRight4.frame
-                rect.origin.x = 280
-                rect.origin.y = 375
-                rect.size.width = 94
-                rect.size.height = 90
-                UIIVappleCatcherRight4.frame = rect
-        
+            var rect = button0.frame
+            rect.origin.x = 20
+            rect.origin.y = 20
+            rect.size.width = 55
+            rect.size.height = 55
+            button0.frame = rect
+            
+            rect = button1.frame
+            rect.origin.x = 90
+            rect.origin.y = 20
+            rect.size.width = 55
+            rect.size.height = 55
+            button1.frame = rect
+            
+            rect = button2.frame
+            rect.origin.x = 160
+            rect.origin.y = 20
+            rect.size.width = 55
+            rect.size.height = 55
+            button2.frame = rect
+            
+            rect = button3.frame
+            rect.origin.x = 230
+            rect.origin.y = 20
+            rect.size.width = 55
+            rect.size.height = 55
+            button3.frame = rect
+            
+            rect = button4.frame
+            rect.origin.x = 300
+            rect.origin.y = 20
+            rect.size.width = 55
+            rect.size.height = 55
+            button4.frame = rect
+            
+            rect = button5.frame
+            rect.origin.x = 20
+            rect.origin.y = 100
+            rect.size.width = 55
+            rect.size.height = 55
+            button5.frame = rect
+            
+            rect = button6.frame
+            rect.origin.x = 90
+            rect.origin.y = 100
+            rect.size.width = 55
+            rect.size.height = 55
+            button6.frame = rect
+            
+            rect = button7.frame
+            rect.origin.x = 160
+            rect.origin.y = 100
+            rect.size.width = 55
+            rect.size.height = 55
+            button7.frame = rect
+            
+            rect = button8.frame
+            rect.origin.x = 230
+            rect.origin.y = 100
+            rect.size.width = 55
+            rect.size.height = 55
+            button8.frame = rect
+            
+            rect = button9.frame
+            rect.origin.x = 300
+            rect.origin.y = 100
+            rect.size.width = 55
+            rect.size.height = 55
+            button9.frame = rect
+            
+            rect = lblFormulae.frame
+            rect.origin.x = 5
+            rect.origin.y = 190
+            rect.size.width = 370
+            rect.size.height = 100
+            lblFormulae.frame = rect
+            
+            rect = plateImage.frame
+            rect.origin.x = 0
+            rect.origin.y = 420
+            rect.size.width = 375
+            rect.size.height = 300
+            plateImage.frame = rect
+            
+            rect = apple1.frame
+            rect.origin.x = 45
+            rect.origin.y = 528
+            rect.size.width = 55
+            rect.size.height = 55
+            apple1.frame = rect
+            
+            rect = apple2.frame
+            rect.origin.x = 100
+            rect.origin.y = 510
+            rect.size.width = 55
+            rect.size.height = 55
+            apple2.frame = rect
+            
+            rect = apple3.frame
+            rect.origin.x = 165
+            rect.origin.y = 510
+            rect.size.width = 55
+            rect.size.height = 55
+            apple3.frame = rect
+            
+            rect = apple4.frame
+            rect.origin.x = 225
+            rect.origin.y = 510
+            rect.size.width = 55
+            rect.size.height = 55
+            apple4.frame = rect
+            
+            rect = apple5.frame
+            rect.origin.x = 290
+            rect.origin.y = 528
+            rect.size.width = 55
+            rect.size.height = 55
+            apple5.frame = rect
+            
+            rect = apple6.frame
+            rect.origin.x = 130
+            rect.origin.y = 532
+            rect.size.width = 55
+            rect.size.height = 55
+            apple6.frame = rect
+            
+            rect = apple7.frame
+            rect.origin.x = 100
+            rect.origin.y = 555
+            rect.size.width = 55
+            rect.size.height = 55
+            apple7.frame = rect
+            
+            rect = apple8.frame
+            rect.origin.x = 165
+            rect.origin.y = 555
+            rect.size.width = 55
+            rect.size.height = 55
+            apple8.frame = rect
+            
+            rect = apple9.frame
+            rect.origin.x = 225
+            rect.origin.y = 555
+            rect.size.width = 55
+            rect.size.height = 55
+            apple9.frame = rect
+            
+            rect = apple10.frame
+            rect.origin.x = 195
+            rect.origin.y = 532
+            rect.size.width = 55
+            rect.size.height = 55
+            apple10.frame = rect
+            
+            rect = imgCloud1.frame
+            rect.origin.x = 0
+            rect.origin.y = -26
+            rect.size.width = 190
+            rect.size.height = 90
+            imgCloud1.frame = rect
+            
+            rect = imgCloud2.frame
+            rect.origin.x = 0
+            rect.origin.y = 65
+            rect.size.width = 190
+            rect.size.height = 90
+            imgCloud2.frame = rect
+            
+            rect = UIIVappleCatcherLeft1.frame
+            rect.origin.x = 0
+            rect.origin.y = 285
+            rect.size.width = 93
+            rect.size.height = 90
+            UIIVappleCatcherLeft1.frame = rect
+            
+            rect = UIIVappleCatcherLeft2.frame
+            rect.origin.x = 0
+            rect.origin.y = 390
+            rect.size.width = 93
+            rect.size.height = 90
+            UIIVappleCatcherLeft2.frame = rect
+            
+            rect = UIIVappleCatcherLeft3.frame
+            rect.origin.x = 93
+            rect.origin.y = 285
+            rect.size.width = 94
+            rect.size.height = 90
+            UIIVappleCatcherLeft3.frame = rect
+            
+            rect = UIIVappleCatcherLeft4.frame
+            rect.origin.x = 93
+            rect.origin.y = 390
+            rect.size.width = 94
+            rect.size.height = 90
+            UIIVappleCatcherLeft4.frame = rect
+            
+            rect = UIIVappleCatcherRight1.frame
+            rect.origin.x = 187
+            rect.origin.y = 285
+            rect.size.width = 93
+            rect.size.height = 90
+            UIIVappleCatcherRight1.frame = rect
+            
+            rect = UIIVappleCatcherRight2.frame
+            rect.origin.x = 187
+            rect.origin.y = 390
+            rect.size.width = 93
+            rect.size.height = 90
+            UIIVappleCatcherRight2.frame = rect
+            
+            rect = UIIVappleCatcherRight3.frame
+            rect.origin.x = 280
+            rect.origin.y = 285
+            rect.size.width = 94
+            rect.size.height = 90
+            UIIVappleCatcherRight3.frame = rect
+            
+            rect = UIIVappleCatcherRight4.frame
+            rect.origin.x = 280
+            rect.origin.y = 390
+            rect.size.width = 94
+            rect.size.height = 90
+            UIIVappleCatcherRight4.frame = rect
+            
             
         }
         
         if PhoneScreenType == "6.7.plus" {
-      
-                var rect = button0.frame
-                rect.origin.x = 20
-                rect.origin.y = 20
-                rect.size.width = 60
-                rect.size.height = 60
-                button0.frame = rect
-                
-                rect = button1.frame
-                rect.origin.x = 95
-                rect.origin.y = 20
-                rect.size.width = 60
-                rect.size.height = 60
-                button1.frame = rect
-                
-                rect = button2.frame
-                rect.origin.x = 170
-                rect.origin.y = 20
-                rect.size.width = 60
-                rect.size.height = 60
-                button2.frame = rect
-                
-                rect = button3.frame
-                rect.origin.x = 245
-                rect.origin.y = 20
-                rect.size.width = 60
-                rect.size.height = 60
-                button3.frame = rect
-                
-                rect = button4.frame
-                rect.origin.x = 320
-                rect.origin.y = 20
-                rect.size.width = 60
-                rect.size.height = 60
-                button4.frame = rect
-                
-                rect = button5.frame
-                rect.origin.x = 20
-                rect.origin.y = 100
-                rect.size.width = 60
-                rect.size.height = 60
-                button5.frame = rect
-                
-                rect = button6.frame
-                rect.origin.x = 95
-                rect.origin.y = 100
-                rect.size.width = 60
-                rect.size.height = 60
-                button6.frame = rect
-                
-                rect = button7.frame
-                rect.origin.x = 170
-                rect.origin.y = 100
-                rect.size.width = 60
-                rect.size.height = 60
-                button7.frame = rect
-                
-                rect = button8.frame
-                rect.origin.x = 245
-                rect.origin.y = 100
-                rect.size.width = 60
-                rect.size.height = 60
-                button8.frame = rect
-                
-                rect = button9.frame
-                rect.origin.x = 320
-                rect.origin.y = 100
-                rect.size.width = 60
-                rect.size.height = 60
-                button9.frame = rect
-                
-                rect = lblFormulae.frame
-                rect.origin.x = 5
-                rect.origin.y = 190
-                rect.size.width = 409
-                rect.size.height = 150
-                lblFormulae.frame = rect
-                
-                rect = plateImage.frame
-                rect.origin.x = 0
-                rect.origin.y = 480
-                rect.size.width = 425
-                rect.size.height = 350
-                plateImage.frame = rect
-                
-                rect = apple1.frame
-                rect.origin.x = 55
-                rect.origin.y = 612
-                rect.size.width = 60
-                rect.size.height = 60
-                apple1.frame = rect
-                
-                rect = apple2.frame
-                rect.origin.x = 110
-                rect.origin.y = 590
-                rect.size.width = 60
-                rect.size.height = 60
-                apple2.frame = rect
-                
-                rect = apple3.frame
-                rect.origin.x = 175
-                rect.origin.y = 590
-                rect.size.width = 60
-                rect.size.height = 60
-                apple3.frame = rect
-                
-                rect = apple4.frame
-                rect.origin.x = 235
-                rect.origin.y = 590
-                rect.size.width = 60
-                rect.size.height = 60
-                apple4.frame = rect
-                
-                rect = apple5.frame
-                rect.origin.x = 300
-                rect.origin.y = 612
-                rect.size.width = 60
-                rect.size.height = 60
-                apple5.frame = rect
-                
-                rect = apple6.frame
-                rect.origin.x = 140
-                rect.origin.y = 612
-                rect.size.width = 60
-                rect.size.height = 60
-                apple6.frame = rect
-                
-                rect = apple7.frame
-                rect.origin.x = 110
-                rect.origin.y = 635
-                rect.size.width = 60
-                rect.size.height = 60
-                apple7.frame = rect
-                
-                rect = apple8.frame
-                rect.origin.x = 175
-                rect.origin.y = 635
-                rect.size.width = 60
-                rect.size.height = 60
-                apple8.frame = rect
-                
-                rect = apple9.frame
-                rect.origin.x = 235
-                rect.origin.y = 635
-                rect.size.width = 60
-                rect.size.height = 60
-                apple9.frame = rect
-                
-                rect = apple10.frame
-                rect.origin.x = 205
-                rect.origin.y = 612
-                rect.size.width = 60
-                rect.size.height = 60
-                apple10.frame = rect
-                
-                rect = imgCloud1.frame
-                rect.origin.x = 0
-                rect.origin.y = -26
-                rect.size.width = 190
-                rect.size.height = 90
-                imgCloud1.frame = rect
-                
-                rect = imgCloud2.frame
-                rect.origin.x = 0
-                rect.origin.y = 85
-                rect.size.width = 190
-                rect.size.height = 90
-                imgCloud2.frame = rect
-                
-                //increase fontsize for plus sized screen
-                lblFormulae.font = lblFormulae.font.withSize(72.0)
-
+            
+            var rect = button0.frame
+            rect.origin.x = 20
+            rect.origin.y = 20
+            rect.size.width = 60
+            rect.size.height = 60
+            button0.frame = rect
+            
+            rect = button1.frame
+            rect.origin.x = 95
+            rect.origin.y = 20
+            rect.size.width = 60
+            rect.size.height = 60
+            button1.frame = rect
+            
+            rect = button2.frame
+            rect.origin.x = 170
+            rect.origin.y = 20
+            rect.size.width = 60
+            rect.size.height = 60
+            button2.frame = rect
+            
+            rect = button3.frame
+            rect.origin.x = 245
+            rect.origin.y = 20
+            rect.size.width = 60
+            rect.size.height = 60
+            button3.frame = rect
+            
+            rect = button4.frame
+            rect.origin.x = 320
+            rect.origin.y = 20
+            rect.size.width = 60
+            rect.size.height = 60
+            button4.frame = rect
+            
+            rect = button5.frame
+            rect.origin.x = 20
+            rect.origin.y = 100
+            rect.size.width = 60
+            rect.size.height = 60
+            button5.frame = rect
+            
+            rect = button6.frame
+            rect.origin.x = 95
+            rect.origin.y = 100
+            rect.size.width = 60
+            rect.size.height = 60
+            button6.frame = rect
+            
+            rect = button7.frame
+            rect.origin.x = 170
+            rect.origin.y = 100
+            rect.size.width = 60
+            rect.size.height = 60
+            button7.frame = rect
+            
+            rect = button8.frame
+            rect.origin.x = 245
+            rect.origin.y = 100
+            rect.size.width = 60
+            rect.size.height = 60
+            button8.frame = rect
+            
+            rect = button9.frame
+            rect.origin.x = 320
+            rect.origin.y = 100
+            rect.size.width = 60
+            rect.size.height = 60
+            button9.frame = rect
+            
+            rect = lblFormulae.frame
+            rect.origin.x = 5
+            rect.origin.y = 160
+            rect.size.width = 409
+            rect.size.height = 150
+            lblFormulae.frame = rect
+            
+            rect = plateImage.frame
+            rect.origin.x = 0
+            rect.origin.y = 480
+            rect.size.width = 425
+            rect.size.height = 350
+            plateImage.frame = rect
+            
+            rect = apple1.frame
+            rect.origin.x = 55
+            rect.origin.y = 612
+            rect.size.width = 60
+            rect.size.height = 60
+            apple1.frame = rect
+            
+            rect = apple2.frame
+            rect.origin.x = 110
+            rect.origin.y = 590
+            rect.size.width = 60
+            rect.size.height = 60
+            apple2.frame = rect
+            
+            rect = apple3.frame
+            rect.origin.x = 175
+            rect.origin.y = 590
+            rect.size.width = 60
+            rect.size.height = 60
+            apple3.frame = rect
+            
+            rect = apple4.frame
+            rect.origin.x = 235
+            rect.origin.y = 590
+            rect.size.width = 60
+            rect.size.height = 60
+            apple4.frame = rect
+            
+            rect = apple5.frame
+            rect.origin.x = 300
+            rect.origin.y = 612
+            rect.size.width = 60
+            rect.size.height = 60
+            apple5.frame = rect
+            
+            rect = apple6.frame
+            rect.origin.x = 140
+            rect.origin.y = 612
+            rect.size.width = 60
+            rect.size.height = 60
+            apple6.frame = rect
+            
+            rect = apple7.frame
+            rect.origin.x = 110
+            rect.origin.y = 635
+            rect.size.width = 60
+            rect.size.height = 60
+            apple7.frame = rect
+            
+            rect = apple8.frame
+            rect.origin.x = 175
+            rect.origin.y = 635
+            rect.size.width = 60
+            rect.size.height = 60
+            apple8.frame = rect
+            
+            rect = apple9.frame
+            rect.origin.x = 235
+            rect.origin.y = 635
+            rect.size.width = 60
+            rect.size.height = 60
+            apple9.frame = rect
+            
+            rect = apple10.frame
+            rect.origin.x = 205
+            rect.origin.y = 612
+            rect.size.width = 60
+            rect.size.height = 60
+            apple10.frame = rect
+            
+            rect = imgCloud1.frame
+            rect.origin.x = 0
+            rect.origin.y = -26
+            rect.size.width = 190
+            rect.size.height = 90
+            imgCloud1.frame = rect
+            
+            rect = imgCloud2.frame
+            rect.origin.x = 0
+            rect.origin.y = 85
+            rect.size.width = 190
+            rect.size.height = 90
+            imgCloud2.frame = rect
+            
+            rect = UIIVappleCatcherLeft1.frame
+            rect.origin.x = 0
+            rect.origin.y = 306
+            rect.size.width = 103
+            rect.size.height = 104
+            UIIVappleCatcherLeft1.frame = rect
+            
+            rect = UIIVappleCatcherLeft2.frame
+            rect.origin.x = 0
+            rect.origin.y = 440
+            rect.size.width = 103
+            rect.size.height = 104
+            UIIVappleCatcherLeft2.frame = rect
+            
+            rect = UIIVappleCatcherLeft3.frame
+            rect.origin.x = 104
+            rect.origin.y = 306
+            rect.size.width = 104
+            rect.size.height = 104
+            UIIVappleCatcherLeft3.frame = rect
+            
+            rect = UIIVappleCatcherLeft4.frame
+            rect.origin.x = 104
+            rect.origin.y = 440
+            rect.size.width = 104
+            rect.size.height = 104
+            UIIVappleCatcherLeft4.frame = rect
+            
+            rect = UIIVappleCatcherRight1.frame
+            rect.origin.x = 208
+            rect.origin.y = 306
+            rect.size.width = 103
+            rect.size.height = 104
+            UIIVappleCatcherRight1.frame = rect
+            
+            rect = UIIVappleCatcherRight2.frame
+            rect.origin.x = 208
+            rect.origin.y = 440
+            rect.size.width = 103
+            rect.size.height = 104
+            UIIVappleCatcherRight2.frame = rect
+            
+            rect = UIIVappleCatcherRight3.frame
+            rect.origin.x = 311
+            rect.origin.y = 306
+            rect.size.width = 104
+            rect.size.height = 104
+            UIIVappleCatcherRight3.frame = rect
+            
+            rect = UIIVappleCatcherRight4.frame
+            rect.origin.x = 311
+            rect.origin.y = 440
+            rect.size.width = 104
+            rect.size.height = 104
+            UIIVappleCatcherRight4.frame = rect
+            
+            //increase fontsize for plus sized screen
+            lblFormulae.font = lblFormulae.font.withSize(72.0)
+            
             
         }
-        
-        
-        
+
         
         
     }
@@ -852,157 +930,13 @@ class ViewController: UIViewController {
     
     
     //generates a random float given 2 values, used for randomising animations in multiple instances
-    public func randomBetweenNumbers(firstNum: CGFloat, secondNum: CGFloat) -> CGFloat{
-        return CGFloat(arc4random()) / CGFloat(UINT32_MAX) * abs(firstNum - secondNum) + min(firstNum, secondNum)
-    }
-    
-    // switch to test which sound to play based on which random integers have been generated
-    public func playCorrectSound(){
-        
-        
-        switch (intRandNumber1, intRandNumber2) {
-            
-        case (0,0):
-            
-            playsound(soundTitle: "0plus0", soundOfType: "m4a")
-            
-            
-        case (0,1):
-            
-            playsound(soundTitle: "0plus1", soundOfType: "m4a")
-            
-        case (0,2):
-            
-            playsound(soundTitle: "0plus2", soundOfType: "m4a")
-            
-        case (0,3):
-            
-            playsound(soundTitle: "0plus3", soundOfType: "m4a")
-            
-        case (0,4):
-            
-            playsound(soundTitle: "0plus4", soundOfType: "m4a")
-            
-        case (1,0):
-            
-            playsound(soundTitle: "1plus0", soundOfType: "m4a")
-            
-        case (1,1):
-            
-            playsound(soundTitle: "1plus1", soundOfType: "m4a")
-            
-        case (1,2):
-            
-            playsound(soundTitle: "1plus2", soundOfType: "m4a")
-            
-        case (1,3):
-            
-            playsound(soundTitle: "1plus3", soundOfType: "m4a")
-            
-        case (1,4):
-            
-            playsound(soundTitle: "1plus4", soundOfType: "m4a")
-            
-        case (2,0):
-            
-            playsound(soundTitle: "2plus0", soundOfType: "m4a")
-            
-        case (2,1):
-            
-            playsound(soundTitle: "2plus1", soundOfType: "m4a")
-            
-        case (2,2):
-            
-            playsound(soundTitle: "2plus2", soundOfType: "m4a")
-            
-        case (2,3):
-            
-            playsound(soundTitle: "2plus3", soundOfType: "m4a")
-            
-        case (2,4):
-            
-            playsound(soundTitle: "2plus4", soundOfType: "m4a")
-            
-        case (3,0):
-            
-            playsound(soundTitle: "3plus0", soundOfType: "m4a")
-            
-        case (3,1):
-            
-            playsound(soundTitle: "3plus1", soundOfType: "m4a")
-            
-        case (3,2):
-            
-            playsound(soundTitle: "3plus2", soundOfType: "m4a")
-            
-        case (3,3):
-            
-            playsound(soundTitle: "3plus3", soundOfType: "m4a")
-            
-        case (3,4):
-            
-            playsound(soundTitle: "3plus4", soundOfType: "m4a")
-            
-        case (4,0):
-            
-            playsound(soundTitle: "4plus0", soundOfType: "m4a")
-            
-        case (4,1):
-            
-            playsound(soundTitle: "4plus1", soundOfType: "m4a")
-            
-        case (4,2):
-            
-            playsound(soundTitle: "4plus2", soundOfType: "m4a")
-            
-        case (4,3):
-            
-            playsound(soundTitle: "4plus3", soundOfType: "m4a")
-            
-        case (4,4):
-            
-            playsound(soundTitle: "4plus4", soundOfType: "m4a")
-            
-        default: break
-            
-            
-        }
-        
-    }
     
     
-    //play a sound using 2 passed string variables, these are the sound filename, and the file type (e.g. wav)
-    public func playsound(soundTitle: String, soundOfType: String){
-        
-        //var soundTitle: String
-        
-        let audioFilePath = Bundle.main.path(forResource: soundTitle, ofType: soundOfType)
-        
-        if audioFilePath != nil {
-            
-            let audioFileUrl = NSURL.fileURL(withPath: audioFilePath!)
-            
-            
-            do{
-                
-                
-                try audioPlayer = AVAudioPlayer(contentsOf: audioFileUrl)
-                audioPlayer.play()
-            }
-                
-            catch  {
-                
-                //no catch statement implemented, this will be on a future revision
-            }
-            
-            
-        }
-        
-        
-    }
-
     
-    //rotuine allows you to drag apples / constrains them
+    //randomBetweenNumbers
+    
+    
+    //routine allows you to drag apples / constrains them
     public func dragUIImageView (_sender: UIPanGestureRecognizer){
         
         var point = _sender.location(in: view)
@@ -1072,26 +1006,26 @@ class ViewController: UIViewController {
         
         
         if PhoneScreenType == "6.7.plus" {
-            if point.y < 300 {
-                point.y = 300
+            if point.y < 340 {
+                point.y = 340
                 draggedView.center = point
                 
             }
-            else if point.y > screenHeight! - 45 {
-                point.y = screenHeight! - 45
+            else if point.y > screenHeight! - 35 {
+                point.y = screenHeight! - 35
                 draggedView.center = point
             }
             else {
                 draggedView.center = point
             }
             
-            if point.x < 25 {
-                point.x = 25
+            if point.x < 35 {
+                point.x = 35
                 draggedView.center = point
             }
-            else if point.x > screenWidth!-25 {
+            else if point.x > screenWidth!-35 {
                 
-                point.x = screenWidth!-25
+                point.x = screenWidth!-35
                 draggedView.center = point
             }
             else {

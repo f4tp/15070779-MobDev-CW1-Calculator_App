@@ -10,6 +10,9 @@
 		2C0F42AA1DC4A89100A831C7 /* Boing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C0F42A91DC4A89100A831C7 /* Boing.wav */; };
 		2C9DB0A51DBBAC5300EECA9D /* WinScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9DB0A41DBBAC5300EECA9D /* WinScreenViewController.swift */; };
 		2C9DB0A71DBCACE100EECA9D /* flashingimage:UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9DB0A61DBCACE100EECA9D /* flashingimage:UIImageView.swift */; };
+		2CBD26A71DCF593200B44D62 /* Play Sound Procedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD26A61DCF593100B44D62 /* Play Sound Procedure.swift */; };
+		2CBD26AB1DCF62A100B44D62 /* Sound Selector Switch Procedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD26AA1DCF62A100B44D62 /* Sound Selector Switch Procedure.swift */; };
+		2CBD26AD1DCF662A00B44D62 /* Generate Rand Floats Between.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD26AC1DCF662A00B44D62 /* Generate Rand Floats Between.swift */; };
 		2CCC03011DB3837D00A6E7AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC03001DB3837D00A6E7AE /* AppDelegate.swift */; };
 		2CCC03031DB3837D00A6E7AE /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCC03021DB3837D00A6E7AE /* MainScreenViewController.swift */; };
 		2CCC03061DB3837D00A6E7AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CCC03041DB3837D00A6E7AE /* Main.storyboard */; };
@@ -49,6 +52,9 @@
 		2C0F42A91DC4A89100A831C7 /* Boing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Boing.wav; sourceTree = "<group>"; };
 		2C9DB0A41DBBAC5300EECA9D /* WinScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinScreenViewController.swift; sourceTree = "<group>"; };
 		2C9DB0A61DBCACE100EECA9D /* flashingimage:UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "flashingimage:UIImageView.swift"; sourceTree = "<group>"; };
+		2CBD26A61DCF593100B44D62 /* Play Sound Procedure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Play Sound Procedure.swift"; sourceTree = "<group>"; };
+		2CBD26AA1DCF62A100B44D62 /* Sound Selector Switch Procedure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sound Selector Switch Procedure.swift"; sourceTree = "<group>"; };
+		2CBD26AC1DCF662A00B44D62 /* Generate Rand Floats Between.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Generate Rand Floats Between.swift"; sourceTree = "<group>"; };
 		2CCC02FD1DB3837D00A6E7AE /* [15070779]CW1_Calculator_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "[15070779]CW1_Calculator_App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CCC03001DB3837D00A6E7AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CCC03021DB3837D00A6E7AE /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +135,7 @@
 				2C0F42A91DC4A89100A831C7 /* Boing.wav */,
 			);
 			name = Sounds;
+			path = "[15070779]CW1_Calculator_App";
 			sourceTree = "<group>";
 		};
 		2C9DB0CE1DBE383600EECA9D /* UIImageView Subclasses */ = {
@@ -138,6 +145,7 @@
 				2C9DB0A61DBCACE100EECA9D /* flashingimage:UIImageView.swift */,
 			);
 			name = "UIImageView Subclasses";
+			path = "[15070779]CW1_Calculator_App";
 			sourceTree = "<group>";
 		};
 		2C9DB0CF1DBE385A00EECA9D /* ViewControllers */ = {
@@ -147,12 +155,28 @@
 				2C9DB0A41DBBAC5300EECA9D /* WinScreenViewController.swift */,
 			);
 			name = ViewControllers;
+			path = "[15070779]CW1_Calculator_App";
+			sourceTree = "<group>";
+		};
+		2CBD26A51DCF58ED00B44D62 /* Swift Files */ = {
+			isa = PBXGroup;
+			children = (
+				2CBD26A61DCF593100B44D62 /* Play Sound Procedure.swift */,
+				2CBD26AA1DCF62A100B44D62 /* Sound Selector Switch Procedure.swift */,
+				2CBD26AC1DCF662A00B44D62 /* Generate Rand Floats Between.swift */,
+			);
+			name = "Swift Files";
+			path = "[15070779]CW1_Calculator_App";
 			sourceTree = "<group>";
 		};
 		2CCC02F41DB3837C00A6E7AE = {
 			isa = PBXGroup;
 			children = (
 				2CCC02FF1DB3837D00A6E7AE /* [15070779]CW1_Calculator_App */,
+				2C0F42941DC4A6E200A831C7 /* Sounds */,
+				2C9DB0CF1DBE385A00EECA9D /* ViewControllers */,
+				2CBD26A51DCF58ED00B44D62 /* Swift Files */,
+				2C9DB0CE1DBE383600EECA9D /* UIImageView Subclasses */,
 				2CCC02FE1DB3837D00A6E7AE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -168,9 +192,6 @@
 		2CCC02FF1DB3837D00A6E7AE /* [15070779]CW1_Calculator_App */ = {
 			isa = PBXGroup;
 			children = (
-				2C0F42941DC4A6E200A831C7 /* Sounds */,
-				2C9DB0CE1DBE383600EECA9D /* UIImageView Subclasses */,
-				2C9DB0CF1DBE385A00EECA9D /* ViewControllers */,
 				2CCC03001DB3837D00A6E7AE /* AppDelegate.swift */,
 				2CCC03041DB3837D00A6E7AE /* Main.storyboard */,
 				2CF010B31DC5EA69005D686A /* setUpViewFunc.swift */,
@@ -281,9 +302,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CBD26AD1DCF662A00B44D62 /* Generate Rand Floats Between.swift in Sources */,
 				2CF010B41DC5EA69005D686A /* setUpViewFunc.swift in Sources */,
 				2CCC03031DB3837D00A6E7AE /* MainScreenViewController.swift in Sources */,
+				2CBD26AB1DCF62A100B44D62 /* Sound Selector Switch Procedure.swift in Sources */,
 				2C9DB0A51DBBAC5300EECA9D /* WinScreenViewController.swift in Sources */,
+				2CBD26A71DCF593200B44D62 /* Play Sound Procedure.swift in Sources */,
 				2CCC03151DB3891700A6E7AE /* draggable:UIImageView.swift in Sources */,
 				2C9DB0A71DBCACE100EECA9D /* flashingimage:UIImageView.swift in Sources */,
 				2CCC03011DB3837D00A6E7AE /* AppDelegate.swift in Sources */,

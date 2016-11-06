@@ -12,7 +12,7 @@ import AVFoundation
 class WinScreenViewController: UIViewController {
 
     
-    var audioPlayer: AVAudioPlayer!
+    
     @IBOutlet weak var lblWellDoneMessage: UILabel!
     @IBOutlet weak var btnCauseSegue: UIButton!
     @IBOutlet weak var imgViewStar1: flashingimage_UIImageView!
@@ -547,34 +547,6 @@ class WinScreenViewController: UIViewController {
         
         }
     
-    public func playsound(soundTitle: String, soundOfType: String){
-        
-       
-        
-        let audioFilePath = Bundle.main.path(forResource: soundTitle, ofType: soundOfType)
-        
-        if audioFilePath != nil {
-            
-            let audioFileUrl = NSURL.fileURL(withPath: audioFilePath!)
-            
-            
-            do{
-                
-                
-                try audioPlayer = AVAudioPlayer(contentsOf: audioFileUrl)
-                audioPlayer.play()
-            }
-                
-            catch  {
-                
-                //no catch statement implemented, this will be on a future revision
-            }
-            
-            
-        }
-        
-        
-    }
 
     
         
