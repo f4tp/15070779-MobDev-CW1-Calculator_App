@@ -19,7 +19,7 @@ var audioPlayer: AVAudioPlayer!
 var intRandNumber1: Int = 0
 var intRandNumber2: Int = 0
 
-//global variable set up to match user's answer to, will be assigned the correct value after Random numbers have been generated (viewDidLoad
+//global variable set up to match user's answer to, will be assigned the correct value after Random numbers have been g enerated (viewDidLoad
 var intTotal:Int = 0
 
 
@@ -28,9 +28,12 @@ class ViewController: UIViewController {
 
 //@@@@@@@@ GLOBAL VARIABLES @@@@@@@@@@
     
+
+    
     //draggedView global variable instance
     var draggedView: UIView!
-    
+   
+    //variables for testing screen size to programmatically set up the layout, needs to be global as more than one function has access to these values (e.g. screen size function and animation)
 
     var screenSize: CGRect?
     var screenWidth:CGFloat?
@@ -63,7 +66,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var apple10: draggable_UIImageView!
     @IBOutlet weak var imgCloud1: UIImageView!
     @IBOutlet weak var imgCloud2: UIImageView!
-    //instances of apples catches - to control to 'snap into place' action, these are UIImageViews with no colour
+    //instances of apples catches - to control to 'snap into place' action, these are UIImageViews
     @IBOutlet weak var UIIVappleCatcherLeft1: UIImageView!
     @IBOutlet weak var UIIVappleCatcherLeft2: UIImageView!
     @IBOutlet weak var UIIVappleCatcherLeft3: UIImageView!
@@ -76,10 +79,10 @@ class ViewController: UIViewController {
     
 
     
-    //variables for testing screen size to programmatically set up the layout, needs to be global as more than one function has access to these values (e.g. screen size function and animation)
+
 
     //instances of Pan gesture - to detect drag user interaction for each apple, and to controls state.ended to test to see if drag has ended to snap apples into place, have to be global as they are accessed in different procedures - e.g. dragUIImageView(), and snapToApples()
-    var gesture = UIPanGestureRecognizer()
+    var gesture1 = UIPanGestureRecognizer()
     var gesture2 = UIPanGestureRecognizer()
     var gesture3 = UIPanGestureRecognizer()
     var gesture4 = UIPanGestureRecognizer()
@@ -90,8 +93,6 @@ class ViewController: UIViewController {
     var gesture9 = UIPanGestureRecognizer()
     var gesture10 = UIPanGestureRecognizer()
     
-    //variable tells the program whenteh user has finished dragging an apple, global as it needs to be updated from the dragUIImageView() and the snapToApples() procedures
-    var gestureEnded: Bool = false
  
 
     
@@ -101,13 +102,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //reset apple catcher full booleans so they can be snapped into place in only the empty slots
+
         
         //random integer numbers generated for sum formulae, global as difference functiosn need access to these - e.g. sending across in the segue - used in  the view for both viewcontrollers
         intRandNumber1 = Int(arc4random_uniform(5))
         intRandNumber2 = Int(arc4random_uniform(5))
         
         //onload, initialise the panGesture mechanism, will test to see if the gesture state has ended later to snap apples into place
-        gesture = UIPanGestureRecognizer(target: self, action: #selector(dragUIImageView))
+        gesture1 = UIPanGestureRecognizer(target: self, action: #selector(dragUIImageView))
         gesture2 = UIPanGestureRecognizer(target: self, action: #selector(dragUIImageView))
         gesture3 = UIPanGestureRecognizer(target: self, action: #selector(dragUIImageView))
         gesture4 = UIPanGestureRecognizer(target: self, action: #selector(dragUIImageView))
@@ -119,7 +122,7 @@ class ViewController: UIViewController {
         gesture10 = UIPanGestureRecognizer(target: self, action: #selector(dragUIImageView))
         
         
-        apple1.addGestureRecognizer(gesture)
+        apple1.addGestureRecognizer(gesture1)
         apple2.addGestureRecognizer(gesture2)
         apple3.addGestureRecognizer(gesture3)
         apple4.addGestureRecognizer(gesture4)
@@ -180,7 +183,6 @@ class ViewController: UIViewController {
     
     //programmatically sets up the layout of this view
     override func viewWillLayoutSubviews() {
-        
         
         
         UIIVappleCatcherLeft1.layer.borderColor = UIColor.black.cgColor
@@ -381,63 +383,60 @@ class ViewController: UIViewController {
             rect = UIIVappleCatcherLeft1.frame
             rect.origin.x = 0
             rect.origin.y = 255
-            rect.size.width = 80
+            rect.size.width = 70
             rect.size.height = 80
             UIIVappleCatcherLeft1.frame = rect
             
             rect = UIIVappleCatcherLeft2.frame
             rect.origin.x = 0
             rect.origin.y = 345
-            rect.size.width = 80
+            rect.size.width = 70
             rect.size.height = 80
             UIIVappleCatcherLeft2.frame = rect
             
             rect = UIIVappleCatcherLeft3.frame
-            rect.origin.x = 80
+            rect.origin.x = 83
             rect.origin.y = 255
-            rect.size.width = 80
+            rect.size.width = 70
             rect.size.height = 80
             UIIVappleCatcherLeft3.frame = rect
             
             rect = UIIVappleCatcherLeft4.frame
-            rect.origin.x = 80
+            rect.origin.x = 83
             rect.origin.y = 345
-            rect.size.width = 80
+            rect.size.width = 70
             rect.size.height = 80
             UIIVappleCatcherLeft4.frame = rect
             
             rect = UIIVappleCatcherRight1.frame
-            rect.origin.x = 160
+            rect.origin.x = 167
             rect.origin.y = 255
-            rect.size.width = 80
+            rect.size.width = 70
             rect.size.height = 80
             UIIVappleCatcherRight1.frame = rect
             
             rect = UIIVappleCatcherRight2.frame
-            rect.origin.x = 160
+            rect.origin.x = 167
             rect.origin.y = 345
-            rect.size.width = 80
+            rect.size.width = 70
             rect.size.height = 80
             UIIVappleCatcherRight2.frame = rect
             
             rect = UIIVappleCatcherRight3.frame
-            rect.origin.x = 240
+            rect.origin.x = 250
             rect.origin.y = 255
-            rect.size.width = 80
+            rect.size.width = 70
             rect.size.height = 80
             UIIVappleCatcherRight3.frame = rect
             
             rect = UIIVappleCatcherRight4.frame
-            rect.origin.x = 240
+            rect.origin.x = 250
             rect.origin.y = 345
-            rect.size.width = 80
+            rect.size.width = 70
             rect.size.height = 80
             UIIVappleCatcherRight4.frame = rect
             
-            
-            
-            //}
-            
+ 
         }
         
         if PhoneScreenType == "6.7" {
@@ -610,62 +609,63 @@ class ViewController: UIViewController {
             rect.size.height = 90
             imgCloud2.frame = rect
             
+            rect = UIIVappleCatcherRight3.frame
+            rect.origin.x = 291
+            rect.origin.y = 285
+            rect.size.width = 84
+            rect.size.height = 90
+            UIIVappleCatcherRight3.frame = rect
+            
+            rect = UIIVappleCatcherRight1.frame
+            rect.origin.x = 194
+            rect.origin.y = 285
+            rect.size.width = 84
+            rect.size.height = 90
+            UIIVappleCatcherRight1.frame = rect
+            
+            rect = UIIVappleCatcherLeft3.frame
+            rect.origin.x = 97
+            rect.origin.y = 285
+            rect.size.width = 84
+            rect.size.height = 90
+            UIIVappleCatcherLeft3.frame = rect
+            
             rect = UIIVappleCatcherLeft1.frame
             rect.origin.x = 0
             rect.origin.y = 285
-            rect.size.width = 93
+            rect.size.width = 84
             rect.size.height = 90
             UIIVappleCatcherLeft1.frame = rect
+            
+            rect = UIIVappleCatcherRight4.frame
+            rect.origin.x = 291
+            rect.origin.y = 390
+            rect.size.width = 84
+            rect.size.height = 90
+            UIIVappleCatcherRight4.frame = rect
+            
+            rect = UIIVappleCatcherRight2.frame
+            rect.origin.x = 194
+            rect.origin.y = 390
+            rect.size.width = 84
+            rect.size.height = 90
+            UIIVappleCatcherRight2.frame = rect
+            
+            
+            rect = UIIVappleCatcherLeft4.frame
+            rect.origin.x = 97
+            rect.origin.y = 390
+            rect.size.width = 84
+            rect.size.height = 90
+            UIIVappleCatcherLeft4.frame = rect
             
             rect = UIIVappleCatcherLeft2.frame
             rect.origin.x = 0
             rect.origin.y = 390
-            rect.size.width = 93
+            rect.size.width = 84
             rect.size.height = 90
             UIIVappleCatcherLeft2.frame = rect
-            
-            rect = UIIVappleCatcherLeft3.frame
-            rect.origin.x = 93
-            rect.origin.y = 285
-            rect.size.width = 94
-            rect.size.height = 90
-            UIIVappleCatcherLeft3.frame = rect
-            
-            rect = UIIVappleCatcherLeft4.frame
-            rect.origin.x = 93
-            rect.origin.y = 390
-            rect.size.width = 94
-            rect.size.height = 90
-            UIIVappleCatcherLeft4.frame = rect
-            
-            rect = UIIVappleCatcherRight1.frame
-            rect.origin.x = 187
-            rect.origin.y = 285
-            rect.size.width = 93
-            rect.size.height = 90
-            UIIVappleCatcherRight1.frame = rect
-            
-            rect = UIIVappleCatcherRight2.frame
-            rect.origin.x = 187
-            rect.origin.y = 390
-            rect.size.width = 93
-            rect.size.height = 90
-            UIIVappleCatcherRight2.frame = rect
-            
-            rect = UIIVappleCatcherRight3.frame
-            rect.origin.x = 280
-            rect.origin.y = 285
-            rect.size.width = 94
-            rect.size.height = 90
-            UIIVappleCatcherRight3.frame = rect
-            
-            rect = UIIVappleCatcherRight4.frame
-            rect.origin.x = 280
-            rect.origin.y = 390
-            rect.size.width = 94
-            rect.size.height = 90
-            UIIVappleCatcherRight4.frame = rect
-            
+           
             
         }
         
@@ -839,61 +839,65 @@ class ViewController: UIViewController {
             rect.size.height = 90
             imgCloud2.frame = rect
             
+            rect = UIIVappleCatcherRight3.frame
+            rect.origin.x = 321
+            rect.origin.y = 306
+            rect.size.width = 93
+            rect.size.height = 104
+            UIIVappleCatcherRight3.frame = rect
+            
+            rect = UIIVappleCatcherRight1.frame
+            rect.origin.x = 213
+            rect.origin.y = 306
+            rect.size.width = 93
+            rect.size.height = 104
+            UIIVappleCatcherRight1.frame = rect
+            
+            rect = UIIVappleCatcherLeft3.frame
+            rect.origin.x = 107
+            rect.origin.y = 306
+            rect.size.width = 93
+            rect.size.height = 104
+            UIIVappleCatcherLeft3.frame = rect
+            
             rect = UIIVappleCatcherLeft1.frame
             rect.origin.x = 0
             rect.origin.y = 306
-            rect.size.width = 103
+            rect.size.width = 93
             rect.size.height = 104
             UIIVappleCatcherLeft1.frame = rect
+            
+            
+            
+            rect = UIIVappleCatcherRight4.frame
+            rect.origin.x = 321
+            rect.origin.y = 440
+            rect.size.width = 93
+            rect.size.height = 104
+            UIIVappleCatcherRight4.frame = rect
+            
+            rect = UIIVappleCatcherRight2.frame
+            rect.origin.x = 213
+            rect.origin.y = 440
+            rect.size.width = 93
+            rect.size.height = 104
+            UIIVappleCatcherRight2.frame = rect
+            
+            
+            rect = UIIVappleCatcherLeft4.frame
+            rect.origin.x = 107
+            rect.origin.y = 440
+            rect.size.width = 93
+            rect.size.height = 104
+            UIIVappleCatcherLeft4.frame = rect
             
             rect = UIIVappleCatcherLeft2.frame
             rect.origin.x = 0
             rect.origin.y = 440
-            rect.size.width = 103
+            rect.size.width = 93
             rect.size.height = 104
             UIIVappleCatcherLeft2.frame = rect
             
-            rect = UIIVappleCatcherLeft3.frame
-            rect.origin.x = 104
-            rect.origin.y = 306
-            rect.size.width = 104
-            rect.size.height = 104
-            UIIVappleCatcherLeft3.frame = rect
-            
-            rect = UIIVappleCatcherLeft4.frame
-            rect.origin.x = 104
-            rect.origin.y = 440
-            rect.size.width = 104
-            rect.size.height = 104
-            UIIVappleCatcherLeft4.frame = rect
-            
-            rect = UIIVappleCatcherRight1.frame
-            rect.origin.x = 208
-            rect.origin.y = 306
-            rect.size.width = 103
-            rect.size.height = 104
-            UIIVappleCatcherRight1.frame = rect
-            
-            rect = UIIVappleCatcherRight2.frame
-            rect.origin.x = 208
-            rect.origin.y = 440
-            rect.size.width = 103
-            rect.size.height = 104
-            UIIVappleCatcherRight2.frame = rect
-            
-            rect = UIIVappleCatcherRight3.frame
-            rect.origin.x = 311
-            rect.origin.y = 306
-            rect.size.width = 104
-            rect.size.height = 104
-            UIIVappleCatcherRight3.frame = rect
-            
-            rect = UIIVappleCatcherRight4.frame
-            rect.origin.x = 311
-            rect.origin.y = 440
-            rect.size.width = 104
-            rect.size.height = 104
-            UIIVappleCatcherRight4.frame = rect
             
             //increase fontsize for plus sized screen
             lblFormulae.font = lblFormulae.font.withSize(72.0)
@@ -929,16 +933,13 @@ class ViewController: UIViewController {
 //@@@@@@@@ FUNCTIONS I CREATED @@@@@@@@@@
     
     
-    //generates a random float given 2 values, used for randomising animations in multiple instances
-    
-    
-    
-    //randomBetweenNumbers
-    
+
     
     //routine allows you to drag apples / constrains them
     public func dragUIImageView (_sender: UIPanGestureRecognizer){
         
+
+   
         var point = _sender.location(in: view)
         draggedView = _sender.view!
         
@@ -989,13 +990,13 @@ class ViewController: UIViewController {
                 draggedView.center = point
             }
             
-            if point.x < 20 {
-                point.x = 20
+            if point.x < 25 {
+                point.x = 25
                 draggedView.center = point
             }
-            else if point.x > screenWidth!-20 {
+            else if point.x > screenWidth!-25 {
                 
-                point.x = screenWidth!-20
+                point.x = screenWidth!-25
                 draggedView.center = point
             }
             else {
@@ -1037,363 +1038,275 @@ class ViewController: UIViewController {
 
     }
     
-    //routine allows you to snap apples into place so they don't overlap
+    
+    
+
+    //routine allows you to snap apples into place so they don't overlap, firgiving, easier to be counted, still has problems though - tried implementing a routine to stop apples overlapping in each pot, but no luck - not enough time
     public func snapApples(){
-        if gesture.state == UIGestureRecognizerState.ended {
-            if draggedView.frame.intersects(UIIVappleCatcherLeft1.frame) {
+        if gesture1.state == UIGestureRecognizerState.ended {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft1.frame){
                 draggedView.center = UIIVappleCatcherLeft1.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherLeft2.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft2.frame){
                 draggedView.center = UIIVappleCatcherLeft2.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherLeft3.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft3.frame){
                 draggedView.center = UIIVappleCatcherLeft3.center
-                
             }
-            
-            if draggedView.frame.intersects(UIIVappleCatcherLeft4.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft4.frame){
                 draggedView.center = UIIVappleCatcherLeft4.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight1.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight1.frame){
                 draggedView.center = UIIVappleCatcherRight1.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight2.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight2.frame){
                 draggedView.center = UIIVappleCatcherRight2.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight3.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight3.frame){
                 draggedView.center = UIIVappleCatcherRight3.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight4.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight4.frame){
                 draggedView.center = UIIVappleCatcherRight4.center
-                
             }
         }
         if gesture2.state == UIGestureRecognizerState.ended {
-            if draggedView.frame.intersects(UIIVappleCatcherLeft1.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft1.frame){
                 draggedView.center = UIIVappleCatcherLeft1.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherLeft2.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft2.frame){
                 draggedView.center = UIIVappleCatcherLeft2.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherLeft3.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft3.frame){
                 draggedView.center = UIIVappleCatcherLeft3.center
-                
             }
-            
-            if draggedView.frame.intersects(UIIVappleCatcherLeft4.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft4.frame){
                 draggedView.center = UIIVappleCatcherLeft4.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight1.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight1.frame){
                 draggedView.center = UIIVappleCatcherRight1.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight2.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight2.frame){
                 draggedView.center = UIIVappleCatcherRight2.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight3.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight3.frame){
                 draggedView.center = UIIVappleCatcherRight3.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight4.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight4.frame){
                 draggedView.center = UIIVappleCatcherRight4.center
-                
             }
         }
         if gesture3.state == UIGestureRecognizerState.ended {
-            if draggedView.frame.intersects(UIIVappleCatcherLeft1.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft1.frame){
                 draggedView.center = UIIVappleCatcherLeft1.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherLeft2.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft2.frame){
                 draggedView.center = UIIVappleCatcherLeft2.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherLeft3.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft3.frame){
                 draggedView.center = UIIVappleCatcherLeft3.center
-                
             }
-            
-            if draggedView.frame.intersects(UIIVappleCatcherLeft4.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft4.frame){
                 draggedView.center = UIIVappleCatcherLeft4.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight1.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight1.frame){
                 draggedView.center = UIIVappleCatcherRight1.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight2.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight2.frame){
                 draggedView.center = UIIVappleCatcherRight2.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight3.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight3.frame){
                 draggedView.center = UIIVappleCatcherRight3.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight4.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight4.frame){
                 draggedView.center = UIIVappleCatcherRight4.center
-                
             }
         }
         if gesture4.state == UIGestureRecognizerState.ended {
-            if draggedView.frame.intersects(UIIVappleCatcherLeft1.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft1.frame){
                 draggedView.center = UIIVappleCatcherLeft1.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherLeft2.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft2.frame){
                 draggedView.center = UIIVappleCatcherLeft2.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherLeft3.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft3.frame){
                 draggedView.center = UIIVappleCatcherLeft3.center
-                
             }
-            
-            if draggedView.frame.intersects(UIIVappleCatcherLeft4.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft4.frame){
                 draggedView.center = UIIVappleCatcherLeft4.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight1.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight1.frame){
                 draggedView.center = UIIVappleCatcherRight1.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight2.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight2.frame){
                 draggedView.center = UIIVappleCatcherRight2.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight3.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight3.frame){
                 draggedView.center = UIIVappleCatcherRight3.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight4.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight4.frame){
                 draggedView.center = UIIVappleCatcherRight4.center
-                
             }
         }
         if gesture5.state == UIGestureRecognizerState.ended {
-            if draggedView.frame.intersects(UIIVappleCatcherLeft1.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft1.frame){
                 draggedView.center = UIIVappleCatcherLeft1.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherLeft2.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft2.frame){
                 draggedView.center = UIIVappleCatcherLeft2.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherLeft3.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft3.frame){
                 draggedView.center = UIIVappleCatcherLeft3.center
-                
             }
-            
-            if draggedView.frame.intersects(UIIVappleCatcherLeft4.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft4.frame){
                 draggedView.center = UIIVappleCatcherLeft4.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight1.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight1.frame){
                 draggedView.center = UIIVappleCatcherRight1.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight2.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight2.frame){
                 draggedView.center = UIIVappleCatcherRight2.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight3.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight3.frame){
                 draggedView.center = UIIVappleCatcherRight3.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight4.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight4.frame){
                 draggedView.center = UIIVappleCatcherRight4.center
-                
             }
         }
         if gesture6.state == UIGestureRecognizerState.ended {
-            if draggedView.frame.intersects(UIIVappleCatcherLeft1.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft1.frame){
                 draggedView.center = UIIVappleCatcherLeft1.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherLeft2.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft2.frame){
                 draggedView.center = UIIVappleCatcherLeft2.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherLeft3.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft3.frame){
                 draggedView.center = UIIVappleCatcherLeft3.center
-                
             }
-            
-            if draggedView.frame.intersects(UIIVappleCatcherLeft4.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft4.frame){
                 draggedView.center = UIIVappleCatcherLeft4.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight1.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight1.frame){
                 draggedView.center = UIIVappleCatcherRight1.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight2.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight2.frame){
                 draggedView.center = UIIVappleCatcherRight2.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight3.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight3.frame){
                 draggedView.center = UIIVappleCatcherRight3.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight4.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight4.frame){
                 draggedView.center = UIIVappleCatcherRight4.center
-                
             }
         }
         if gesture7.state == UIGestureRecognizerState.ended {
-            if draggedView.frame.intersects(UIIVappleCatcherLeft1.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft1.frame){
                 draggedView.center = UIIVappleCatcherLeft1.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherLeft2.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft2.frame){
                 draggedView.center = UIIVappleCatcherLeft2.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherLeft3.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft3.frame){
                 draggedView.center = UIIVappleCatcherLeft3.center
-                
             }
-            
-            if draggedView.frame.intersects(UIIVappleCatcherLeft4.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft4.frame){
                 draggedView.center = UIIVappleCatcherLeft4.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight1.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight1.frame){
                 draggedView.center = UIIVappleCatcherRight1.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight2.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight2.frame){
                 draggedView.center = UIIVappleCatcherRight2.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight3.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight3.frame){
                 draggedView.center = UIIVappleCatcherRight3.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight4.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight4.frame){
                 draggedView.center = UIIVappleCatcherRight4.center
-                
             }
         }
         if gesture8.state == UIGestureRecognizerState.ended {
-            if draggedView.frame.intersects(UIIVappleCatcherLeft1.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft1.frame){
                 draggedView.center = UIIVappleCatcherLeft1.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherLeft2.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft2.frame){
                 draggedView.center = UIIVappleCatcherLeft2.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherLeft3.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft3.frame){
                 draggedView.center = UIIVappleCatcherLeft3.center
-                
             }
-            
-            if draggedView.frame.intersects(UIIVappleCatcherLeft4.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft4.frame){
                 draggedView.center = UIIVappleCatcherLeft4.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight1.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight1.frame){
                 draggedView.center = UIIVappleCatcherRight1.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight2.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight2.frame){
                 draggedView.center = UIIVappleCatcherRight2.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight3.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight3.frame){
                 draggedView.center = UIIVappleCatcherRight3.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight4.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight4.frame){
                 draggedView.center = UIIVappleCatcherRight4.center
-                
             }
         }
         if gesture9.state == UIGestureRecognizerState.ended {
-            if draggedView.frame.intersects(UIIVappleCatcherLeft1.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft1.frame){
                 draggedView.center = UIIVappleCatcherLeft1.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherLeft2.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft2.frame){
                 draggedView.center = UIIVappleCatcherLeft2.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherLeft3.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft3.frame){
                 draggedView.center = UIIVappleCatcherLeft3.center
-                
             }
-            
-            if draggedView.frame.intersects(UIIVappleCatcherLeft4.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft4.frame){
                 draggedView.center = UIIVappleCatcherLeft4.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight1.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight1.frame){
                 draggedView.center = UIIVappleCatcherRight1.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight2.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight2.frame){
                 draggedView.center = UIIVappleCatcherRight2.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight3.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight3.frame){
                 draggedView.center = UIIVappleCatcherRight3.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight4.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight4.frame){
                 draggedView.center = UIIVappleCatcherRight4.center
-                
             }
         }
         if gesture10.state == UIGestureRecognizerState.ended {
-            if draggedView.frame.intersects(UIIVappleCatcherLeft1.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft1.frame){
                 draggedView.center = UIIVappleCatcherLeft1.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherLeft2.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft2.frame){
                 draggedView.center = UIIVappleCatcherLeft2.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherLeft3.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft3.frame){
                 draggedView.center = UIIVappleCatcherLeft3.center
-                
             }
-            
-            if draggedView.frame.intersects(UIIVappleCatcherLeft4.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherLeft4.frame){
                 draggedView.center = UIIVappleCatcherLeft4.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight1.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight1.frame){
                 draggedView.center = UIIVappleCatcherRight1.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight2.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight2.frame){
                 draggedView.center = UIIVappleCatcherRight2.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight3.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight3.frame){
                 draggedView.center = UIIVappleCatcherRight3.center
-                
             }
-            if draggedView.frame.intersects(UIIVappleCatcherRight4.frame) {
+            if draggedView.frame.intersects(UIIVappleCatcherRight4.frame){
                 draggedView.center = UIIVappleCatcherRight4.center
-                
             }
         }
     }
     
     
-    
-    //clouds animation - random timing, all relative to screen size so should work on all screen sizes. Cannot create independent class for this yet as the routine is relative to screen size and working inside of the UIImageView sub class and gettign values out of the viewcontroller class into these might be tricky (maybe working with delegates) - if I get time I will look at doing this, but for now - leave them in here
+    //clouds animation - random timing, all relative to screen size so should work on all screen sizes. Cannot create independent class for this yet as the routine is relative to screen size and working inside of the UIImageView sub class and getting values out of the viewcontroller class into these might be tricky (maybe working with delegates) - if I get time I will look at doing this, but for now - leave them in here
     
     override func viewWillAppear(_ animated: Bool) {
         //set the x value of each cloud image to whatever it is at the moment + the width of the screen it is being viewed on >moves it off of the screen to the right

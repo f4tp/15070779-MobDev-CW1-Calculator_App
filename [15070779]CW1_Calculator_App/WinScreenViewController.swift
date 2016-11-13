@@ -80,15 +80,6 @@ class WinScreenViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     
 //cause segue to main screen when clicked
@@ -98,7 +89,7 @@ class WinScreenViewController: UIViewController {
     }
     
     
-    // this routine manages certain animation of elements on this view. DO NOT put this code inside its own subclass of the UIImageView as the animations are nested inside each other and hence are are relative to each other. Dping this would make the routine more complicated and time consuming connecting classes to other classes
+    // this routine manages certain animation of elements on this view. DO NOT put this code inside its own subclass of the UIImageView as the animations are nested inside each other and hence are are relative to each other. Doing this would make the routine more complicated and time consuming connecting classes to other classes
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -143,22 +134,10 @@ class WinScreenViewController: UIViewController {
         
     }
     
-    
+            //tests screen size, then applies correct layout constraints based on how big the screen is
     override func viewDidLayoutSubviews() {
     
-        if PhoneScreenType == "4" {
-    
-    
-            if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft || UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
-        
-            }
-    
-            else{
-    
-            }
-    
-        }
-        
+
         if PhoneScreenType == "5" {
             
             
@@ -387,8 +366,8 @@ class WinScreenViewController: UIViewController {
                 rect = btnCauseSegue.frame
                 rect.origin.x = 130
                 rect.origin.y = 314
-                rect.size.width = 100
-                rect.size.height = 100
+                rect.size.width = 120
+                rect.size.height = 120
                 btnCauseSegue.frame = rect
                 
                 rect = imgScroll.frame
