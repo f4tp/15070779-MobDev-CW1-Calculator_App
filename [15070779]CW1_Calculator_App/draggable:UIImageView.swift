@@ -17,9 +17,7 @@ class draggable_UIImageView: UIImageView {
     var screenHeight:CGFloat?
     var PhoneScreenType: NSString?
     var newCenter = CGPoint (x:0, y:0)
-    var applesPlacedLeft: Int = 0
-    var applesPlacedRight: Int = 0
-    
+  
     
     
     override func layoutSubviews() {
@@ -29,9 +27,7 @@ class draggable_UIImageView: UIImageView {
         screenWidth = screenSize?.width
         screenHeight = screenSize?.height
         
-        //if (screenWidth == 320.0 && screenHeight == 480.0) {            PhoneScreenType = "4"
-        //}
-        
+
         if (screenWidth == 320.0 && screenHeight == 568.0) {
             PhoneScreenType = "5"
         }
@@ -58,13 +54,11 @@ class draggable_UIImageView: UIImageView {
         let dx = currentLocation!.x - startLocation!.x
         let dy = currentLocation!.y - startLocation!.y
         
-        //self.center = CGPoint(x: self.center.x+dx, y: self.center.y+dy)
+
         
         newCenter = CGPoint(x: self.center.x+dx, y: self.center.y+dy)
         
-        //self.center = newCenter
-        
-        
+   
         
         //constrain movements based on screen size
         
@@ -175,69 +169,12 @@ class draggable_UIImageView: UIImageView {
                 
             else {
                 self.center = newCenter
-                //self.isUserInteractionEnabled = false
+               
             }
             
         }
         
  
-    }
-    
-    //implemented to 'snap' apples into place when the touch has finished
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        /*
-     
-        if PhoneScreenType == "5"  {
-            
-            if newCenter.y < 397 && newCenter.x < 127{
-                
-                if applesPlacedLeft == 0 {
-                
-                newCenter.y = 322
-                newCenter.x = 50
-                //self.isUserInteractionEnabled = false
-                self.center = newCenter
-                applesPlacedLeft = applesPlacedLeft + 1
-                    
-                }
-                
-                else if applesPlacedLeft == 1 {
-                    
-                    newCenter.y = 322
-                    newCenter.x = 120
-                    self.isUserInteractionEnabled = false
-                    self.center = newCenter
-                    applesPlacedLeft = applesPlacedLeft + 1
-                    
-                }
-                
-                else if applesPlacedLeft == 2 {
-                    
-                    newCenter.y = 356
-                    newCenter.x = 25
-                    self.isUserInteractionEnabled = false
-                    applesPlacedLeft = applesPlacedLeft + 1
-                    self.center = newCenter
-                    
-                }
-                
-                else if applesPlacedLeft == 3 {
-                    
-                    newCenter.y = 356
-                    newCenter.x = 85
-                    self.isUserInteractionEnabled = false
-                    applesPlacedLeft = applesPlacedLeft + 1
-                    self.center = newCenter
-                    
-                }
-            
-            
-            
-            }
-        }
- 
- */
     }
     
     

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-    // switch to test which sound to play based on which random integers have been generated
+// switch to test which sound to play based on which random integers have been generated for the forumlae
 public func playCorrectSound(){
     
     

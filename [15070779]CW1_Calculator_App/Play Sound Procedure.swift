@@ -10,14 +10,11 @@ import UIKit
 import AVFoundation
 
 
-   //play a sound using 2 passed string variables, these are the sound filename, and the file type (e.g. wav)
+//play a sound using 2 passed string variables, these are the sound filename, and the file type (e.g. wav)
 
 public func playsound(soundTitle: String, soundOfType: String){
     
-    //var audioPlayer1: AVAudioPlayer!
-    
-    
-    
+   
     let audioFilePath = Bundle.main.path(forResource: soundTitle, ofType: soundOfType)
     
     if audioFilePath != nil {

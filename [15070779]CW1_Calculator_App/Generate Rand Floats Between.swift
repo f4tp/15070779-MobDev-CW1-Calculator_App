@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+//generates random cgfloat values to control animations - creates dynamic animations that aren't the same all of the time, and varies their speed / timings etc
+
 public func randomBetweenNumbers(firstNum: CGFloat, secondNum: CGFloat) -> CGFloat{
     return CGFloat(arc4random()) / CGFloat(UINT32_MAX) * abs(firstNum - secondNum) + min(firstNum, secondNum)
 }

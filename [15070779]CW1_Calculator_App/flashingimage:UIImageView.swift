@@ -8,13 +8,11 @@
 
 import UIKit
 
+//rotuine applied to UIImageView will make them animate - by animating their alpha level, alpha level set using random float generated in another swift file
+
 class flashingimage_UIImageView: UIImageView {
 
-    func randomBetweenNumbers(firstNum: CGFloat, secondNum: CGFloat) -> CGFloat{
-        return CGFloat(arc4random()) / CGFloat(UINT32_MAX) * abs(firstNum - secondNum) + min(firstNum, secondNum)
-    }
-    
-    
+
     override func layoutSubviews() {
         
         self.alpha = (randomBetweenNumbers(firstNum: 0.2,secondNum: 1.0))

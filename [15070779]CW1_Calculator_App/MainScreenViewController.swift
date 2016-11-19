@@ -11,7 +11,7 @@ import AVFoundation //framework that handles playing sounds in the app
 
 //project global variables - all need to be accessed by other swift files so have been declared outside of class
 
-//instance of audio player to handle sound playing,
+//instance of audio player to handle sound playing
 var audioPlayer: AVAudioPlayer!
 
 
@@ -19,8 +19,11 @@ var audioPlayer: AVAudioPlayer!
 var intRandNumber1: Int = 0
 var intRandNumber2: Int = 0
 
-//global variable set up to match user's answer to, will be assigned the correct value after Random numbers have been g enerated (viewDidLoad
+//global variable set up to match user's answer to, will be assigned the correct value after Random numbers have been generated (viewDidLoad
 var intTotal:Int = 0
+
+var draggedView: UIView!
+var point = CGPoint (x: 0, y:0)
 
 
 class ViewController: UIViewController {
@@ -30,15 +33,11 @@ class ViewController: UIViewController {
     
 
     
-    //draggedView global variable instance
-    var draggedView: UIView!
+
    
     //variables for testing screen size to programmatically set up the layout, needs to be global as more than one function has access to these values (e.g. screen size function and animation)
 
-    var screenSize: CGRect?
-    var screenWidth:CGFloat?
-    var screenHeight:CGFloat?
-    var PhoneScreenType: NSString?
+
     
     //@@@@@@@@@@ OUTLETS @@@@@@@@@@
     
@@ -102,10 +101,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //reset apple catcher full booleans so they can be snapped into place in only the empty slots
-
+  
         
-        //random integer numbers generated for sum formulae, global as difference functiosn need access to these - e.g. sending across in the segue - used in  the view for both viewcontrollers
+        //random integer numbers generated for sum formulae, global as difference functions need access to these - e.g. sending across in the segue - used in  the view for both viewcontrollers
         intRandNumber1 = Int(arc4random_uniform(5))
         intRandNumber2 = Int(arc4random_uniform(5))
         
@@ -149,29 +147,11 @@ class ViewController: UIViewController {
         //play correct sound based on random integers generated
         playCorrectSound()
         
-        //routines for programmatically setting up layout - reports screen size so the right routine can run and set up the layout based on how big the screen is
-        screenSize = UIScreen.main.bounds
-        screenWidth = screenSize?.width
-        screenHeight = screenSize?.height
+   
         
-      
+        //run routine to meause screen size when the view loads
+        measureScreenSize()
         
-        //iphone 4 routine cancelled as Module Leader suggested not to cater for it due to simulator not being available & not being able to run Swift developments for iOS 10
-        
-        //if (screenWidth == 320.0 && screenHeight == 480.0) {            PhoneScreenType = "4"
-        //}
-        
-        if (screenWidth == 320.0 && screenHeight == 568.0) {
-            PhoneScreenType = "5"
-        }
-        
-        if (screenWidth == 375.0 && screenHeight == 667.0) {
-            PhoneScreenType = "6.7"
-        }
-        
-        if (screenWidth == 414.0 && screenHeight == 736.0) {
-            PhoneScreenType = "6.7.plus"
-        }
         
     }
     
@@ -899,7 +879,7 @@ class ViewController: UIViewController {
             UIIVappleCatcherLeft2.frame = rect
             
             
-            //increase fontsize for plus sized screen
+            //increase font size for plus sized screen
             lblFormulae.font = lblFormulae.font.withSize(72.0)
             
             
@@ -938,110 +918,21 @@ class ViewController: UIViewController {
     //routine allows you to drag apples / constrains them
     public func dragUIImageView (_sender: UIPanGestureRecognizer){
         
-
-   
-        var point = _sender.location(in: view)
+        point = _sender.location(in: view)
         draggedView = _sender.view!
         
-        if PhoneScreenType == "5" {
-             if point.y < 300 {
-                point.y = 300
-                draggedView.center = point
-            
-             }
-             else if point.y > screenHeight! - 40 {
-                point.y = screenHeight! - 40
-                draggedView.center = point
-             }
-             else {
-                draggedView.center = point
-             }
-            
-             if point.x < 20 {
-                point.x = 20
-                draggedView.center = point
-             }
-             else if point.x > screenWidth!-20 {
-                
-                point.x = screenWidth!-20
-                draggedView.center = point
-             }
-             else {
-                draggedView.center = point
-             }
-            
-            snapApples()
-
-
-
-        }
+        //calls 2 procedures, constrainAppleMovement is called all the time the drag is going on, snap apples when the state of the panGestureRec. ended is true
         
-        if PhoneScreenType == "6.7" {
-            if point.y < 300 {
-                point.y = 300
-                draggedView.center = point
-                
-            }
-            else if point.y > screenHeight! - 40 {
-                point.y = screenHeight! - 40
-                draggedView.center = point
-            }
-            else {
-                draggedView.center = point
-            }
-            
-            if point.x < 25 {
-                point.x = 25
-                draggedView.center = point
-            }
-            else if point.x > screenWidth!-25 {
-                
-                point.x = screenWidth!-25
-                draggedView.center = point
-            }
-            else {
-                draggedView.center = point
-            }
-            snapApples()
-        }
-        
-        
-        if PhoneScreenType == "6.7.plus" {
-            if point.y < 340 {
-                point.y = 340
-                draggedView.center = point
-                
-            }
-            else if point.y > screenHeight! - 35 {
-                point.y = screenHeight! - 35
-                draggedView.center = point
-            }
-            else {
-                draggedView.center = point
-            }
-            
-            if point.x < 35 {
-                point.x = 35
-                draggedView.center = point
-            }
-            else if point.x > screenWidth!-35 {
-                
-                point.x = screenWidth!-35
-                draggedView.center = point
-            }
-            else {
-                draggedView.center = point
-            }
-            
-            snapApples()
-        }
+        constrainAppleMovement()
+        snapApples()
+    
 
     }
     
     
     
 
-    //routine allows you to snap apples into place so they don't overlap, firgiving, easier to be counted, still has problems though - tried implementing a routine to stop apples overlapping in each pot, but no luck - not enough time
+    //routine allows you to snap apples into place so they don't overlap, forgiving, easier to be counted, still has problems though - tried implementing a routine to stop apples overlapping in each pot, but no luck - not enough time
     public func snapApples(){
         if gesture1.state == UIGestureRecognizerState.ended {
             if draggedView.frame.intersects(UIIVappleCatcherLeft1.frame){
@@ -1314,10 +1205,10 @@ class ViewController: UIViewController {
         imgCloud1.center.x += screenWidth!
         imgCloud2.center.x += screenWidth!
   
-        //animation routine, one for first cloud, one for second cloud. It animates the cloud by reducing the x value of each on screen by the width of the screen > moves them from off teh screen from the right to the left back on the screen
+        //animation routine, one for first cloud, one for second cloud. It animates the cloud by reducing the x value of each on screen by the width of the screen > moves them from off the screen from the right to the left back on the screen
         
         UIView.animate(withDuration: TimeInterval(randomBetweenNumbers(firstNum: 1.0,secondNum: 10.0)), delay: 0.0, options: [.repeat, .curveLinear], animations: {
-            self.imgCloud1.center.x -= self.screenWidth!
+            self.imgCloud1.center.x -= self.view.bounds.width
          
             })
         

@@ -11,7 +11,7 @@ import AVFoundation
 
 class WinScreenViewController: UIViewController {
 
-    
+    //@@@@@@@@@@Outlets@@@@@@@@@@
     
     @IBOutlet weak var lblWellDoneMessage: UILabel!
     @IBOutlet weak var btnCauseSegue: UIButton!
@@ -27,51 +27,33 @@ class WinScreenViewController: UIViewController {
     @IBOutlet weak var imgViewStar10: flashingimage_UIImageView!
     @IBOutlet weak var imgViewStar11: flashingimage_UIImageView!
     @IBOutlet weak var imgViewStar12: flashingimage_UIImageView!
-    
     @IBOutlet weak var lblAnswerFormulae: UILabel!
-    
     @IBOutlet weak var imgScroll: UIImageView!
    
+    //@@@@@@@@@@ GLOBAL VARIABLES @@@@@@@@@@
     
-    var screenSize: CGRect?
-    var screenWidth:CGFloat?
-    var screenHeight:CGFloat?
-    var PhoneScreenType: NSString?
+
+    
+    //variables used to hold data from MainScreenViewController on segue
+    
     var stringRandNo1 = String()
     var stringRandNo2 = String()
     var stringAnswer = String()
   
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//play sounds if they have got this far to congratulate them
         playsound(soundTitle: "welldone", soundOfType: "wav")
+        
+        
+        //outputs correct answer using data passed from WinScreenViewController
         
         lblAnswerFormulae.text = stringRandNo1 + " + " + stringRandNo2 + " = " + stringAnswer
   
-        
-        
-        
-        screenSize = UIScreen.main.bounds
-        screenWidth = screenSize?.width
-        screenHeight = screenSize?.height
-        
-        if (screenWidth == 320.0 && screenHeight == 480.0) {
-            PhoneScreenType = "4"
-        }
-        
-        if (screenWidth == 320.0 && screenHeight == 568.0) {
-            PhoneScreenType = "5"
-        }
-        
-        if (screenWidth == 375.0 && screenHeight == 667.0) {
-            PhoneScreenType = "6.7"
-        }
-        
-        if (screenWidth == 414.0 && screenHeight == 736.0) {
-            PhoneScreenType = "6.7.plus"
-        }
-
+                
+        measureScreenSize()
     }
 
     override func didReceiveMemoryWarning() {
@@ -134,7 +116,7 @@ class WinScreenViewController: UIViewController {
         
     }
     
-            //tests screen size, then applies correct layout constraints based on how big the screen is
+            // applies correct layout constraints based on how big the screen is
     override func viewDidLayoutSubviews() {
     
 
@@ -398,7 +380,7 @@ class WinScreenViewController: UIViewController {
                 
             else{
                 
-                //tried resizing the stars programatically and on screen but it didn't like it, they disappeared. This might be because these are being called and initialised by a sub class of the UIImageView class
+               
                 var rect = imgViewStar1.frame
                 rect.origin.x = -35
                 rect.origin.y = 14
