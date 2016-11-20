@@ -9,14 +9,18 @@
 import Foundation
 import UIKit
 
-
+/*
+ 
+ this routine is now redundant as the flawed apple drag routine used this with the pangestureRecognizer routine. This routine is now in the draggable:UIImageView class. I tried to get it to work in here then call it from the aforementioned class, but the 'self' reference to the instance of the UIIview object accessing the subClass wasn't able to be accessed in here. I had trouble transfering some data between files / classes (references to Outlets for example).
+ 
+ 
 //routine tests screen size and sets apple constraints accordingly, by resetting coordinates of apple should they try to be dragged out of bounds. this is called in the MainViewController using a panGestureRecognizer, so it constantly called whilst being dragged
 public func constrainAppleMovement(){
     
     
     if PhoneScreenType == "5" {
-        if point.y < 300 {
-            point.y = 300
+        if point.y < 280 {
+            point.y = 280
             draggedView.center = point
             
         }
@@ -108,3 +112,5 @@ public func constrainAppleMovement(){
     
     
 }
+ 
+ */

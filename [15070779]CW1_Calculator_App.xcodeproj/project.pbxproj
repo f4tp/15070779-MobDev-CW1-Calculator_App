@@ -140,6 +140,14 @@
 			path = "[15070779]CW1_Calculator_App";
 			sourceTree = "<group>";
 		};
+		2C138B891DE19A7300BC7A5B /* Redundant Files */ = {
+			isa = PBXGroup;
+			children = (
+				2C6E5CEA1DE07B12008873D3 /* Constrain Apple Movement.swift */,
+			);
+			name = "Redundant Files";
+			sourceTree = "<group>";
+		};
 		2C9DB0CE1DBE383600EECA9D /* UIImageView Subclasses */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,7 +175,7 @@
 				2CBD26AA1DCF62A100B44D62 /* Sound Selector Switch Procedure.swift */,
 				2CBD26AC1DCF662A00B44D62 /* Generate Rand Floats Between.swift */,
 				2C6E5CE81DE07806008873D3 /* Measure Screen Size.swift */,
-				2C6E5CEA1DE07B12008873D3 /* Constrain Apple Movement.swift */,
+				2C138B891DE19A7300BC7A5B /* Redundant Files */,
 			);
 			name = "Swift Files";
 			path = "[15070779]CW1_Calculator_App";
